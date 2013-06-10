@@ -24,7 +24,7 @@ void Sudoku::llenarTabla()
     {
         for(int j=0; j<9; j++)
         {
-            cuadro[z] = new QLineEdit(QString::number(z));
+            cuadro[z] = new QLineEdit();
             ui->gridTabla->addWidget(cuadro[z],i,j);
             z++;
         }
@@ -35,9 +35,10 @@ void Sudoku::llenarTabla()
 
 void Sudoku::on_Btn_validar_clicked()
 {
-    //std::cout<<"Mensaje"<<std::endl;
     int cont;
+    bool valido=true;
     QLineEdit *ledit;
+
     for(int i=0; i<9; i++)
     {
         for(int j=0; j<9; j++)
@@ -45,27 +46,27 @@ void Sudoku::on_Btn_validar_clicked()
             ledit = (QLineEdit*)(ui->gridTabla->itemAtPosition(i,j)->widget());
             cont = ledit->text().toInt();
             matriz[i][j]=cont;
-            //printf("Hola mundo");
         }
     }
+
     for(int i=0; i<9; i++)
     {
         for(int j=0; j<9; j++)
         {
-            if(!validarFila(i,j))
-                printf("Fila %d Invalida\n",i+1);
-            if(!validarColumna(i,j))
-                printf("Columna %d Invalida\n",j+1);
-            if(!validarBloque(i,j))
-                printf("Bloque Invalido\n");
+            if(!validarFila(i,j)) valido=false;
+            if(!validarColumna(i,j)) valido=false;
+            if(!validarBloque(i,j)) valido=false;
         }
     }
+
+    if(!valido) std::cout<<"El tablero esta mal llenado"<<std::endl;
+    else std::cout<<"El tablero esta bien llenado"<<std::endl;
 }
 
 bool Sudoku::validarFila(int fila, int columna){
     for(int i=0; i<9; i++){
         if(i!=columna){
-            if(matriz[fila][i] == matriz[fila][columna]) return false;
+            if(matriz[fila][i] == matriz[fila][columna] || matriz[fila][i] > 9) return false;
         }
     }
     return true;
@@ -74,7 +75,7 @@ bool Sudoku::validarFila(int fila, int columna){
 bool Sudoku::validarColumna(int fila, int columna){
     for(int i=0; i<9; i++){
         if(i!=fila){
-            if(matriz[i][columna] == matriz[fila][columna]) return false;
+            if(matriz[i][columna] == matriz[fila][columna] || matriz[i][columna] > 9) return false;
         }
     }
     return true;

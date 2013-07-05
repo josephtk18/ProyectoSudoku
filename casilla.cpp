@@ -1,28 +1,29 @@
 #include "casilla.h"
 
-Casilla::Casilla(int cont, int f, int c, int reg){
+Casilla::Casilla(int cont, int f, int c, int reg)
+{
     contenido=cont;
     fila=f;
     columna=c;
-    region=r;
+    region=reg;
     disponible=true;
 }
 
 //GETTERS
-int Casilla::getContenido(Casilla c){
-   return c.contenido;
+int Casilla::getContenido(){
+   return contenido;
 }
-int Casilla::getFila(Casilla c){
-    return c.fila;
+int Casilla::getFila(){
+    return fila;
 }
-int Casilla::getColumna(Casilla c){
-    return c.columna;
+int Casilla::getColumna(){
+    return columna;
 }
-int Casilla::getRegion(Casilla c){
-   return c.region;
+int Casilla::getRegion(){
+   return region;
 }
-bool Casilla::isDisponible(Casilla c){
-    return c.disponible;
+bool Casilla::isDisponible(){
+    return disponible;
 }
 
 //SETTERS

@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QLineEdit>
 #include <stdio.h>
+#include <tablero.h>
 
 namespace Ui {
 class Sudoku;
@@ -18,14 +19,10 @@ class Sudoku : public QMainWindow
 
 public:
     explicit Sudoku(QWidget *parent = 0);
-    void generarMatriz();
-    void generarFila(int f);
-    void vaciarFila(int f);
-    void eliminarNum(int a[],int n);
-    void llenarTablaUI();
-    void generarArregloRandom(int a[]);
-    bool hayArreglo(int cont, int a[]);
-    void rellenarWidget();
+    void inicializarMatriz();
+    void pasarTableroAMatriz(Casilla** casillas);
+    void inicializarTablaUI();
+    void pasarMatrizAUI();
     bool validacion(int fila, int columna);
     bool validarFila(int fila, int columna);
     bool validarColumna(int fila, int columna);

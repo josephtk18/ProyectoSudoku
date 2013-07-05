@@ -3,19 +3,22 @@
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
-#include <QGlobal.h>
-#include <QTime>
-
 
 Sudoku::Sudoku(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Sudoku)
 {
     ui->setupUi(this);
-    srand((unsigned)time(NULL));
-    llenarTablaUI();
-    generarMatriz();
-    rellenarWidget();
+    Tablero* t = new Tablero();
+    t->generarTablero();
+    inicializarMatriz();
+    pasarTableroAMatriz(t->getCasillas());
+    inicializarTablaUI();
+    pasarMatrizAUI();
+
+    //llenarTablaUI();
+    //generarMatriz();
+    //rellenarWidget();
 
 }
 
@@ -24,72 +27,25 @@ Sudoku::~Sudoku()
     delete ui;
 }
 
-void Sudoku::generarMatriz(){
+void Sudoku::inicializarMatriz(){
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
             matriz[i][j]=0;
         }
-    }
-    generarFila(0);
+    }    
 }
 
-void Sudoku::generarFila(int f){
-    int arreglo[9], cont=0;
-    if(f>8) return;
-    generarArregloRandom(arreglo);
-
+void Sudoku::pasarTableroAMatriz(Casilla **casillas){
+    int pos;
     for(int i=0; i<9; i++){
-        matriz[f][i]=arreglo[cont];
-        if(!validacion(f,i)){
-            if(i==8){
-                vaciarFila(f);
-                generarArregloRandom(arreglo);
-                i=-1;
-            } else {
-                i--;
-                cont++;
-                if(!hayArreglo(cont,arreglo)){
-                    vaciarFila(f);
-                    generarArregloRandom(arreglo);
-                    i=-1;
-                }
-            }
-        } else {
-            eliminarNum(arreglo,matriz[f][i]);
-            cont=0;
+        for(int j=0; j<9; j++){
+            matriz[i][j]=casillas[pos]->getContenido();
+            pos++;
         }
     }
-    generarFila(f+1);
 }
 
-void Sudoku::vaciarFila(int f){
-    for(int i=0; i<9; i++){
-        matriz[f][i]=0;
-    }
-}
-
-void Sudoku::eliminarNum(int a[],int n){
-    int flag;
-    for(int i=0; i<9; i++){
-        if(a[i]==n){
-            flag=i;
-            break;
-        }
-    }
-    while(flag<8){
-        if(a[flag+1]!=0){
-            a[flag]=a[flag+1];
-            flag++;
-        } else
-            break;
-    }
-    while(flag<9){
-        a[flag]=0;
-        flag++;
-    }
-}
-
-void Sudoku::llenarTablaUI(){
+void Sudoku::inicializarTablaUI(){
     int z = 0;
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
@@ -100,32 +56,7 @@ void Sudoku::llenarTablaUI(){
     }
 }
 
-void Sudoku::generarArregloRandom(int a[]){
-    for(int i=1;i<=9;i++){
-        a[i-1]=i;
-    }
-
-    //Una vez generada la fila, los intercambia de posiciones 9 veces, para que se desordene
-    int rango=9;
-    while (rango > 0){
-        int random = rand()%rango;
-        rango--;
-        int temp = a[rango];
-        a[rango]=a[random];
-        a[random] = temp;
-    }
-}
-
-bool Sudoku::hayArreglo(int cont, int a[]){
-    int disp=0;
-    for(int i=0; i<9; i++){
-        if(a[i]!=0) disp++;
-    }
-    if(cont>disp) return false;
-    return true;
-}
-
-void Sudoku::rellenarWidget(){
+void Sudoku::pasarMatrizAUI(){
     QLineEdit *ledit;
     for(int i=0; i<9; i++)
     {
@@ -165,6 +96,15 @@ void Sudoku::on_Btn_validar_clicked(){
     if(!valido) std::cout<<"El tablero esta mal llenado"<<std::endl;
     else std::cout<<"El tablero esta bien llenado"<<std::endl;
 }
+
+
+
+
+
+
+
+
+
 
 bool Sudoku::validacion(int fila, int columna){
     if(validarFila(fila,columna) && validarColumna(fila,columna) && validarBloque(fila,columna)) return true;

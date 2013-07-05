@@ -12,7 +12,7 @@ Sudoku::Sudoku(QWidget *parent) :
     Tablero* t = new Tablero();
     t->generarTablero();
     inicializarMatriz();
-    pasarTableroAMatriz(t->getCasillas());
+    pasarTableroAMatriz(t->casillas);
     inicializarTablaUI();
     pasarMatrizAUI();
 
@@ -32,11 +32,11 @@ void Sudoku::inicializarMatriz(){
         for(int j=0; j<9; j++){
             matriz[i][j]=0;
         }
-    }    
+    }
 }
 
-void Sudoku::pasarTableroAMatriz(Casilla **casillas){
-    int pos;
+void Sudoku::pasarTableroAMatriz(Casilla *casillas[]){
+    int pos=0;
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
             matriz[i][j]=casillas[pos]->getContenido();

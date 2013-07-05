@@ -8,7 +8,7 @@ Tablero::Tablero()
 }
 
 Casilla** Tablero::getCasillas(){
-    return casillas;
+    return this->casillas;
 }
 
 void Tablero::inicializarCasillas(){
@@ -22,12 +22,12 @@ void Tablero::inicializarCasillas(){
 }
 
 void Tablero::generarTablero(){
-    int cont,fila_actual,k,col=1,pos_bloque,fila[9],bloque1[3],bloque2[3],bloque3[3];
+    int cont,fila_actual,k,col=1,pos_bloque=0,fila[9],bloque1[3],bloque2[3],bloque3[3];
     bool listo=false;
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
 
-    for(int i=0; i<=81; i++){
+    for(int i=0; i<81; i++){
         while(!listo){
             cont=randInt(1,9);
             if(!hayRepetidoFila(casillas[i],cont)){
@@ -60,8 +60,7 @@ void Tablero::generarTablero(){
         if(k==1) pasarBloquesAFila(fila,bloque2,bloque3,bloque1);
         if(k==2) pasarBloquesAFila(fila,bloque3,bloque1,bloque2);
         pos_bloque=0;
-        //for(Casilla c: casillas){
-        for(int i=0; i<=81; i++){
+        for(int i=0; i<81; i++){
             if(casillas[i]->getFila()==fila_actual){
                 casillas[i]->setContenido(fila[pos_bloque]);
                 casillas[i]->setDisponible(false);
@@ -76,8 +75,7 @@ void Tablero::generarTablero(){
 }
 
 bool Tablero::hayRepetidoFila(Casilla* c, int cont){
-    //for(Casilla x: casillas){
-    for(int i=0; i<=81; i++){
+    for(int i=0; i<81; i++){
         if(casillas[i]->getFila()==c->getFila()){
             if(casillas[i]->getContenido()==cont) return true;
         }
@@ -86,7 +84,7 @@ bool Tablero::hayRepetidoFila(Casilla* c, int cont){
 }
 
 void Tablero::pasarBloquesAFila(int F[], int B1[], int B2[], int B3[]){
-    int pos;
+    int pos=0;
     for(int bloque=1; bloque<=3; bloque++){
         for(int i=0; i<=2; i++){
             if(pos>=0 && pos<=2) F[pos]=B1[i];

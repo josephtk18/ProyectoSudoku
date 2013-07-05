@@ -1,7 +1,6 @@
 #include "casilla.h"
 
-Casilla::Casilla(int cont, int f, int c, int reg)
-{
+Casilla::Casilla(int cont, int f, int c, int reg){
     contenido=cont;
     fila=f;
     columna=c;
@@ -11,36 +10,36 @@ Casilla::Casilla(int cont, int f, int c, int reg)
 
 //GETTERS
 int Casilla::getContenido(){
-   return contenido;
+   return this->contenido;
 }
 int Casilla::getFila(){
-    return fila;
+    return this->fila;
 }
 int Casilla::getColumna(){
-    return columna;
+    return this->columna;
 }
 int Casilla::getRegion(){
-   return region;
+   return this->region;
 }
 bool Casilla::isDisponible(){
-    return disponible;
+    return this->disponible;
 }
 
 //SETTERS
 void Casilla::setContenido(int cont){
-    contenido=cont;
+    this->contenido=cont;
 }
 void Casilla::setFila(int f){
-    fila=f;
+    this->fila=f;
 }
 void Casilla::setColumna(int c){
-    columna=c;
+    this->columna=c;
 }
 void Casilla::setRegion(int r){
-    region=r;
+    this->region=r;
 }
 void Casilla::setDisponible(bool d){
-    disponible=d;
+    this->disponible=d;
 }
 
 int Casilla::buscarRegion(int f, int c){

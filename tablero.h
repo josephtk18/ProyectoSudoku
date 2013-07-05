@@ -19,9 +19,10 @@ public:
     void pasarBloquesAFila(int F[], int B1[], int B2[], int B3[]);
     void cambiarOrdenBloques(int B1[], int B2[], int B3[]);
     int randInt(int min, int max);
-
-private:
     Casilla *casillas[81];
+
+//private:
+    //Casilla *casillas[81];
 };
 
 #endif // TABLERO_H

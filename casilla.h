@@ -1,12 +1,10 @@
 #ifndef CASILLA_H
 #define CASILLA_H
 
-
 class Casilla
-{    
-
+{
 public:
-    explicit Casilla(int cont, int f, int c, int reg);
+    Casilla(int cont, int f, int c, int reg);
     int getContenido();
     int getFila();
     int getColumna();

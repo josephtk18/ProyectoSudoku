@@ -20,7 +20,7 @@ class Sudoku : public QMainWindow
 public:
     explicit Sudoku(QWidget *parent = 0);
     void inicializarMatriz();
-    void pasarTableroAMatriz(Casilla** casillas);
+    void pasarTableroAMatriz(Casilla* casillas[]);
     void inicializarTablaUI();
     void pasarMatrizAUI();
     bool validacion(int fila, int columna);

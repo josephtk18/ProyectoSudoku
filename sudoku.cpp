@@ -13,7 +13,8 @@ Sudoku::Sudoku(QWidget *parent) :
 {
     ui->setupUi(this);
     srand((unsigned)time(NULL));
-    llenarTabla();
+    llenarTablaUI();
+    generarMatriz();
     rellenarWidget();
 
 }
@@ -23,93 +24,109 @@ Sudoku::~Sudoku()
     delete ui;
 }
 
-void Sudoku::llenarTabla()
-{
+void Sudoku::generarMatriz(){
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
+            matriz[i][j]=0;
+        }
+    }
+    generarFila(0);
+}
+
+void Sudoku::generarFila(int f){
+    int arreglo[9], cont=0;
+    if(f>8) return;
+    generarArregloRandom(arreglo);
+
+    for(int i=0; i<9; i++){
+        matriz[f][i]=arreglo[cont];
+        if(!validacion(f,i)){
+            if(i==8){
+                vaciarFila(f);
+                generarArregloRandom(arreglo);
+                i=-1;
+            } else {
+                i--;
+                cont++;
+                if(!hayArreglo(cont,arreglo)){
+                    vaciarFila(f);
+                    generarArregloRandom(arreglo);
+                    i=-1;
+                }
+            }
+        } else {
+            eliminarNum(arreglo,matriz[f][i]);
+            cont=0;
+        }
+    }
+    generarFila(f+1);
+}
+
+void Sudoku::vaciarFila(int f){
+    for(int i=0; i<9; i++){
+        matriz[f][i]=0;
+    }
+}
+
+void Sudoku::eliminarNum(int a[],int n){
+    int flag;
+    for(int i=0; i<9; i++){
+        if(a[i]==n){
+            flag=i;
+            break;
+        }
+    }
+    while(flag<8){
+        if(a[flag+1]!=0){
+            a[flag]=a[flag+1];
+            flag++;
+        } else
+            break;
+    }
+    while(flag<9){
+        a[flag]=0;
+        flag++;
+    }
+}
+
+void Sudoku::llenarTablaUI(){
     int z = 0;
-    for(int i=0; i<9; i++)
-    {
-        for(int j=0; j<9; j++)
-        {
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
             cuadro[z] = new QLineEdit();
             ui->gridTabla->addWidget(cuadro[z],i,j);
             z++;
         }
     }
-
-    for(int k=0; k<9; k++){
-        for(int l=0; l<9; l++){
-            matriz[k][l]=0;
-        }
-    }
-    asignarFila(0);
 }
 
-void Sudoku::asignarFila(int fila){
-    if (fila>8){
-        return;
-    }
-    else{
-        //Crear un arreglo de 9 ints, y le asigna los valores 1,2,...9
-        int arreglo[9];
-        for(int i=1;i<=9;i++){
-            arreglo[i-1]=i;
-        }
-
-        //Una vez generada la fila, los intercambia de posiciones 9 veces, para que se desordene
-        int rango=9;
-        while (rango > 0){
-            int random = rand()%rango;
-            rango--;
-            int temp = arreglo[rango];
-            arreglo[rango]=arreglo[random];
-            arreglo[random] = temp;
-        }
-
-        //Llena la fila de la matriz con los valores del arreglo
-        bool flag = false;
-        for(int j=0; j<9; j++){
-            for(int k=0; k<9; k++){
-                flag=false;
-                if(arreglo[k]>=0){
-                    flag = asignarNumero(fila, j, arreglo[k], 0);
-                }
-
-                if(flag==true){
-                    arreglo[k]=-1;
-                    break;
-                }
-            }
-        }
-        asignarFila(fila + 1);
+void Sudoku::generarArregloRandom(int a[]){
+    for(int i=1;i<=9;i++){
+        a[i-1]=i;
     }
 
-}
-
-bool Sudoku::asignarNumero(int fila, int columna, int valor, int counter){
-
-    if(counter>columna){
-        return false;
-    }
-
-    if(validarValor(fila,columna,valor) && !counter) {
-        matriz[fila][columna] = valor;
-        return true;
-    }
-    else if(counter && validarValor(fila,columna - counter,valor) && validarValor(fila, columna, matriz[fila][columna - counter])){
-        matriz[fila][columna] = matriz[fila][columna - counter];
-        matriz[fila][columna - counter] = valor;
-        return true;
-    }else {
-        counter++;
-        return asignarNumero(fila, columna, valor, counter);
+    //Una vez generada la fila, los intercambia de posiciones 9 veces, para que se desordene
+    int rango=9;
+    while (rango > 0){
+        int random = rand()%rango;
+        rango--;
+        int temp = a[rango];
+        a[rango]=a[random];
+        a[random] = temp;
     }
 }
 
+bool Sudoku::hayArreglo(int cont, int a[]){
+    int disp=0;
+    for(int i=0; i<9; i++){
+        if(a[i]!=0) disp++;
+    }
+    if(cont>disp) return false;
+    return true;
+}
 
 void Sudoku::rellenarWidget(){
     QLineEdit *ledit;
-
-    //rellenarMatriz(0,0);
     for(int i=0; i<9; i++)
     {
         for(int j=0; j<9; j++)
@@ -120,8 +137,7 @@ void Sudoku::rellenarWidget(){
     }
 }
 
-void Sudoku::on_Btn_validar_clicked()
-{
+void Sudoku::on_Btn_validar_clicked(){
     int cont;
     bool valido=true;
     QLineEdit *ledit;
@@ -153,22 +169,6 @@ void Sudoku::on_Btn_validar_clicked()
 bool Sudoku::validacion(int fila, int columna){
     if(validarFila(fila,columna) && validarColumna(fila,columna) && validarBloque(fila,columna)) return true;
     return false;
-}
-
-bool Sudoku::validarValor(int fila, int columna, int valor){
-    int centrox = fila/3;
-    int centroy = columna/3;
-    for(int i=fila; i<=9; i++){
-        for(int j=0; j<=9; j++){
-            if(matriz[i][j]!=0){
-                if(fila==i || columna==j || centrox==i/3 || centroy==j/3){
-                    if(matriz[i][j]==valor)
-                        return false;
-                }
-            }
-        }
-    }
-    return true;
 }
 
 bool Sudoku::validarFila(int fila, int columna){

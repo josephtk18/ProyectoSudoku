@@ -18,15 +18,18 @@ class Sudoku : public QMainWindow
 
 public:
     explicit Sudoku(QWidget *parent = 0);
-    void llenarTabla();
+    void generarMatriz();
+    void generarFila(int f);
+    void vaciarFila(int f);
+    void eliminarNum(int a[],int n);
+    void llenarTablaUI();
+    void generarArregloRandom(int a[]);
+    bool hayArreglo(int cont, int a[]);
+    void rellenarWidget();
     bool validacion(int fila, int columna);
     bool validarFila(int fila, int columna);
     bool validarColumna(int fila, int columna);
     bool validarBloque(int fila, int columna);
-    bool validarValor(int fila, int columna, int valor);
-    void rellenarWidget();
-    void asignarFila(int fila);
-    bool asignarNumero(int fila, int columna, int valor, int counter);
     ~Sudoku();
 
 private slots:

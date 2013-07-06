@@ -1,16 +1,13 @@
 #include "ventana_principal.h"
 #include "ui_ventana_principal.h"
-#include <QPalette>
-#include <QtGui>
-#include <QMessageBox>
-#include <acercade.h>
-#include <sudoku.h>
+
 
 Ventana_principal::Ventana_principal(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Ventana_principal)
 {
     ui->setupUi(this);
+    setWindowTitle("Sudoku");
     setBackgroundImage();
     setFixedSize(width(),height());
     //setWindowFlags(Qt::FramelessWindowHint);
@@ -30,16 +27,22 @@ void Ventana_principal::setBackgroundImage(){
     setPalette(p);
 }
 
-void Ventana_principal::on_Btn_nuevo_clicked()
+void Ventana_principal::on_Btn_Iniciar_clicked()
 {
-    Sudoku *s = new Sudoku();
+    Ventana_Jugar *v = new Ventana_Jugar();
     close();
-    s->show();
+    v->show();
 }
 
-void Ventana_principal::on_Btn_cargar_clicked()
+void Ventana_principal::on_Btn_estadisticas_clicked()
 {
 
+}
+
+void Ventana_principal::on_Btn_Ayuda_clicked()
+{
+    Ayuda *a = new Ayuda();
+    a->show();
 }
 
 void Ventana_principal::on_Btn_acercaDe_clicked()
@@ -56,3 +59,7 @@ void Ventana_principal::on_Btn_Salir_clicked()
     }
 
 }
+
+
+
+

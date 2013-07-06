@@ -18,15 +18,21 @@ SOURCES += main.cpp\
     tablero.cpp \
     simplecrypt.cpp \
     ventana_principal.cpp \
-    acercade.cpp
+    acercade.cpp \
+    ayuda.cpp \
+    ventana_jugar.cpp
 
 HEADERS  += sudoku.h \
     casilla.h \
     tablero.h \
     simplecrypt.h \
     ventana_principal.h \
-    acercade.h
+    acercade.h \
+    ayuda.h \
+    ventana_jugar.h
 
 FORMS    += sudoku.ui \
     ventana_principal.ui \
-    acercade.ui
+    acercade.ui \
+    ayuda.ui \
+    ventana_jugar.ui

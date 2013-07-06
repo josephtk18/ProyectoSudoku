@@ -2,6 +2,12 @@
 #define VENTANA_PRINCIPAL_H
 
 #include <QMainWindow>
+#include <QPalette>
+#include <QtGui>
+#include <QMessageBox>
+#include <acercade.h>
+#include <ventana_jugar.h>
+#include <ayuda.h>
 
 namespace Ui {
 class Ventana_principal;
@@ -17,12 +23,10 @@ public:
     void setBackgroundImage();
     
 private slots:
-    void on_Btn_nuevo_clicked();
-
-    void on_Btn_cargar_clicked();
-
+    void on_Btn_Iniciar_clicked();
+    void on_Btn_estadisticas_clicked();
+    void on_Btn_Ayuda_clicked();
     void on_Btn_acercaDe_clicked();
-
     void on_Btn_Salir_clicked();
 
 private:

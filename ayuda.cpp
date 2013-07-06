@@ -1,22 +1,22 @@
-#include "acercade.h"
-#include "ui_acercade.h"
+#include "ayuda.h"
+#include "ui_ayuda.h"
 
-AcercaDe::AcercaDe(QWidget *parent) :
+Ayuda::Ayuda(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::AcercaDe)
+    ui(new Ui::Ayuda)
 {
     ui->setupUi(this);
-    setWindowTitle("Acerca De");
+    setWindowTitle("Ayuda");
     setBackgroundImage();
     setFixedSize(width(),height());
 }
 
-AcercaDe::~AcercaDe()
+Ayuda::~Ayuda()
 {
     delete ui;
 }
 
-void AcercaDe::setBackgroundImage(){
+void Ayuda::setBackgroundImage(){
     QPixmap bg("yingyang.jpg");
     //QPixmap bg("C:/Documents and Settings/usuario/Mis documentos/QTProjects/Sudoku/Imagenes/yingyang.jpg");
     QPalette p(palette());

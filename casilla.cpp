@@ -6,6 +6,9 @@ Casilla::Casilla(int cont, int f, int c, int reg){
     columna=c;
     region=reg;
     disponible=true;
+    setMaximumHeight(100);
+    setMaximumWidth(100);
+
 }
 
 //GETTERS
@@ -59,4 +62,8 @@ int Casilla::buscarRegion(int f, int c){
         if(c>=6 && c<=9) return 9;
     }
 }
+
+/*void Casilla::SetGrafic(int i){
+    //Funcion que asigna la imagen del numero al QLabel
+}*/
 

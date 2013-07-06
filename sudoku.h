@@ -44,6 +44,7 @@ private:
     Ui::Sudoku *ui;
     QLineEdit *cuadro[81];
     int matriz[9][9];
+    Casilla *CasSelect;
 
 };
 

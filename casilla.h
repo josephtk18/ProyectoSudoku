@@ -1,7 +1,9 @@
 #ifndef CASILLA_H
 #define CASILLA_H
 
-class Casilla
+#include <QLabel>
+
+class Casilla : public QLabel
 {
 public:
     Casilla(int cont, int f, int c, int reg);

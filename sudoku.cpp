@@ -135,7 +135,7 @@ void Sudoku::on_Btn_Guardar_clicked(){
     pasarUIAMatriz();
     QString linea=pasarMatrizAString();
     QString crypted=crypto.encryptToString(linea);
-
+    qDebug()<<crypted;
     QFile archivo("partida.txt");
     if ( !archivo.open(QIODevice::WriteOnly)) {
         qDebug()<<"Guardado fallido!";
@@ -148,11 +148,14 @@ void Sudoku::on_Btn_Guardar_clicked(){
 }
 
 void Sudoku::on_Btn_Cargar_clicked(){
+    SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
     QFile archivo("partida.txt");
     if (archivo.exists("partida.txt")){
         archivo.open(QFile::ReadOnly);
         QTextStream stream(&archivo);
-        QString linea=stream.readAll();
+        QString crypt=stream.readAll();
+        QString linea=crypto.decryptToString(crypt);
+        qDebug()<<linea;
         pasarStringAMatriz(linea);
         pasarMatrizAUI();
 

@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         sudoku.cpp \
     casilla.cpp \
-    tablero.cpp
+    tablero.cpp \
+    simplecrypt.cpp
 
 HEADERS  += sudoku.h \
     casilla.h \
-    tablero.h
+    tablero.h \
+    simplecrypt.h
 
 FORMS    += sudoku.ui

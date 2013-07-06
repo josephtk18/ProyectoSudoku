@@ -7,6 +7,7 @@
 #include <QLineEdit>
 #include <stdio.h>
 #include <tablero.h>
+#include <simplecrypt.h>
 
 namespace Ui {
 class Sudoku;
@@ -23,6 +24,9 @@ public:
     void pasarTableroAMatriz(Casilla* casillas[]);
     void inicializarTablaUI();
     void pasarMatrizAUI();
+    void pasarUIAMatriz();
+    QString pasarMatrizAString();
+    void pasarStringAMatriz(QString linea);
     bool validacion(int fila, int columna);
     bool validarFila(int fila, int columna);
     bool validarColumna(int fila, int columna);
@@ -31,6 +35,10 @@ public:
 
 private slots:
     void on_Btn_validar_clicked();
+
+    void on_Btn_Guardar_clicked();
+
+    void on_Btn_Cargar_clicked();
 
 private:
     Ui::Sudoku *ui;

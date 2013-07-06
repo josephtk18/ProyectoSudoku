@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
+#include <QDebug>
+#include <QFile>
+#include <QMessageBox>
 
 Sudoku::Sudoku(QWidget *parent) :
     QMainWindow(parent),
@@ -10,15 +13,19 @@ Sudoku::Sudoku(QWidget *parent) :
 {
     ui->setupUi(this);
     Tablero* t = new Tablero();
+    SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
+
     t->generarTablero();
     inicializarMatriz();
     pasarTableroAMatriz(t->casillas);
     inicializarTablaUI();
     pasarMatrizAUI();
 
-    //llenarTablaUI();
-    //generarMatriz();
-    //rellenarWidget();
+    QString testString("Mensaje a encriptar");
+    QString result = crypto.encryptToString(testString);
+    QString decrypted = crypto.decryptToString(result);
+    qDebug() << testString << endl << result << endl << decrypted;
+
 
 }
 
@@ -68,20 +75,45 @@ void Sudoku::pasarMatrizAUI(){
     }
 }
 
-void Sudoku::on_Btn_validar_clicked(){
-    int cont;
-    bool valido=true;
+void Sudoku::pasarUIAMatriz(){
     QLineEdit *ledit;
-
-    for(int i=0; i<9; i++)
-    {
-        for(int j=0; j<9; j++)
-        {
+    int cont;
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
             ledit = (QLineEdit*)(ui->gridTabla->itemAtPosition(i,j)->widget());
             cont = ledit->text().toInt();
             matriz[i][j]=cont;
         }
     }
+}
+
+QString Sudoku::pasarMatrizAString(){
+    QString linea("");
+    for(int i=0; i<9; i++){
+        for(int j=0; j<9; j++){
+            linea.append(QString::number(matriz[i][j],10));
+            if(j==8){
+                linea.append("\n");
+            }
+        }
+    }
+    return linea;
+}
+
+void Sudoku::pasarStringAMatriz(QString linea){
+    for(int i=0;i<9;i++){
+        for(int j=0;j<9;j++){
+            matriz[i][j]=linea.left(1).toInt();
+            linea.remove(0,1);
+            if(j==8) linea.remove(0,1);
+        }
+    }
+}
+
+void Sudoku::on_Btn_validar_clicked(){
+    bool valido=true;
+
+    pasarUIAMatriz();
 
     for(int i=0; i<9; i++)
     {
@@ -97,9 +129,40 @@ void Sudoku::on_Btn_validar_clicked(){
     else std::cout<<"El tablero esta bien llenado"<<std::endl;
 }
 
+void Sudoku::on_Btn_Guardar_clicked(){
+    SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
+
+    pasarUIAMatriz();
+    QString linea=pasarMatrizAString();
+    QString crypted=crypto.encryptToString(linea);
+
+    QFile archivo("partida.txt");
+    if ( !archivo.open(QIODevice::WriteOnly)) {
+        qDebug()<<"Guardado fallido!";
+    } else {
+        QTextStream stream(&archivo);
+        stream << crypted;
+        stream.flush();
+        qDebug()<<"Guardado completado!";
+    }
+}
+
+void Sudoku::on_Btn_Cargar_clicked(){
+    QFile archivo("partida.txt");
+    if (archivo.exists("partida.txt")){
+        archivo.open(QFile::ReadOnly);
+        QTextStream stream(&archivo);
+        QString linea=stream.readAll();
+        pasarStringAMatriz(linea);
+        pasarMatrizAUI();
 
 
-
+        qDebug()<<linea;
+    } else {
+        QMessageBox::critical(this,"Error","No existe el archivo ");
+    }
+    archivo.close();
+}
 
 
 
@@ -142,3 +205,7 @@ bool Sudoku::validarBloque(int fila, int columna){
     }
     return true;
 }
+
+
+
+

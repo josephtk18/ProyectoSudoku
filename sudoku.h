@@ -6,8 +6,14 @@
 #include <QLineEdit>
 #include <QLineEdit>
 #include <stdio.h>
+#include <stdlib.h>
 #include <tablero.h>
 #include <simplecrypt.h>
+#include <time.h>
+#include <iostream>
+#include <QDebug>
+#include <QFile>
+#include <QMessageBox>
 
 namespace Ui {
 class Sudoku;

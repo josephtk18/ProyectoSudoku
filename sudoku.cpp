@@ -1,11 +1,6 @@
 #include "sudoku.h"
 #include "ui_sudoku.h"
-#include <stdlib.h>
-#include <time.h>
-#include <iostream>
-#include <QDebug>
-#include <QFile>
-#include <QMessageBox>
+
 
 Sudoku::Sudoku(QWidget *parent) :
     QMainWindow(parent),
@@ -20,13 +15,6 @@ Sudoku::Sudoku(QWidget *parent) :
     pasarTableroAMatriz(t->casillas);
     inicializarTablaUI();
     pasarMatrizAUI();
-
-    QString testString("Mensaje a encriptar");
-    QString result = crypto.encryptToString(testString);
-    QString decrypted = crypto.decryptToString(result);
-    qDebug() << testString << endl << result << endl << decrypted;
-
-
 }
 
 Sudoku::~Sudoku()
@@ -131,40 +119,39 @@ void Sudoku::on_Btn_validar_clicked(){
 
 void Sudoku::on_Btn_Guardar_clicked(){
     SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
-
-    pasarUIAMatriz();
-    QString linea=pasarMatrizAString();
-    QString crypted=crypto.encryptToString(linea);
-    qDebug()<<crypted;
-    QFile archivo("partida.txt");
-    if ( !archivo.open(QIODevice::WriteOnly)) {
-        qDebug()<<"Guardado fallido!";
-    } else {
-        QTextStream stream(&archivo);
-        stream << crypted;
-        stream.flush();
-        qDebug()<<"Guardado completado!";
+    if (QMessageBox::Yes == QMessageBox::question(this, "Guardar", "¿Desea guardar la partida actual?", QMessageBox::Yes|QMessageBox::No)){
+        pasarUIAMatriz();
+        QString linea=pasarMatrizAString();
+        QString crypted=crypto.encryptToString(linea);
+        QFile archivo("partida.txt");
+        if ( !archivo.open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(this,"Error!","La partida no se pudo guardar");
+        } else {
+            QTextStream stream(&archivo);
+            stream << crypted;
+            stream.flush();
+            QMessageBox::information(this,"Guardado!","La partida se ha guardado con éxito");
+        }
     }
 }
 
 void Sudoku::on_Btn_Cargar_clicked(){
     SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
-    QFile archivo("partida.txt");
-    if (archivo.exists("partida.txt")){
-        archivo.open(QFile::ReadOnly);
-        QTextStream stream(&archivo);
-        QString crypt=stream.readAll();
-        QString linea=crypto.decryptToString(crypt);
-        qDebug()<<linea;
-        pasarStringAMatriz(linea);
-        pasarMatrizAUI();
-
-
-        qDebug()<<linea;
-    } else {
-        QMessageBox::critical(this,"Error","No existe el archivo ");
+    if (QMessageBox::Yes == QMessageBox::question(this, "Cargar", "Si carga la partida, se perderá la información actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
+            QFile archivo("partida.txt");
+            if (archivo.exists("partida.txt")){
+                archivo.open(QFile::ReadOnly);
+                QTextStream stream(&archivo);
+                QString crypt=stream.readAll();
+                QString linea=crypto.decryptToString(crypt);
+                pasarStringAMatriz(linea);
+                pasarMatrizAUI();
+                QMessageBox::information(this,"Cargado!","La partida se ha cargado con éxito");
+            } else {
+                QMessageBox::critical(this,"Error","No existe el archivo ");
+            }
+            archivo.close();
     }
-    archivo.close();
 }
 
 

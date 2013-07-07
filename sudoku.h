@@ -29,7 +29,7 @@ public:
     explicit Sudoku(int nivel,QWidget *parent = 0);
     void inicializarMatriz();
     void pasarTableroAMatriz(Casilla* casillas[]);
-    void inicializarTablaUI(Casilla *casillas[]);
+    void inicializarTablasUI(Casilla *casillas[]);
     void pasarMatrizAUI();
     void pasarUIAMatriz();
     QString pasarMatrizAString();

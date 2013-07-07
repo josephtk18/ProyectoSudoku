@@ -20,8 +20,7 @@ Ventana_principal::~Ventana_principal()
 }
 
 void Ventana_principal::setBackgroundImage(){
-    QPixmap bg("yingyang.jpg");
-    //QPixmap bg("C:/Documents and Settings/usuario/Mis documentos/QTProjects/Sudoku/Imagenes/yingyang.jpg");
+    QPixmap bg("imagenes/yingyang.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);

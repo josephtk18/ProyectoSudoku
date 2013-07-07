@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <tablero.h>
+#include <digito.h>
 #include <simplecrypt.h>
 #include <time.h>
 #include <iostream>
@@ -31,6 +32,7 @@ public:
     void inicializarTablaUI(Casilla *casillas[]);
     void pasarMatrizAUI();
     void pasarUIAMatriz();
+    void iniciarTeclado();
     QString pasarMatrizAString();
     void pasarStringAMatriz(QString linea);
     bool validacion(int fila, int columna);
@@ -48,7 +50,9 @@ private slots:
 
 private:
     Ui::Sudoku *ui;
-    int matriz[9][9];    
+    int matriz[9][9];
+    Casilla *CasSelec;
+    Digito *Teclado[9];
 
 };
 

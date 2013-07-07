@@ -15,6 +15,8 @@ Sudoku::Sudoku(QWidget *parent) :
     pasarTableroAMatriz(t->casillas);
     inicializarTablaUI(t->casillas);
     pasarMatrizAUI();
+    iniciarTeclado();
+
 }
 
 Sudoku::~Sudoku()
@@ -37,6 +39,13 @@ void Sudoku::pasarTableroAMatriz(Casilla *casillas[]){
             matriz[i][j]=casillas[pos]->getContenido();
             pos++;
         }
+    }
+}
+
+void Sudoku::iniciarTeclado(){
+    for(int i=0; i<9; i++){
+        Teclado[i]=new Digito(i+1);
+        ui->gridTeclado->addWidget(Teclado[i]);
     }
 }
 

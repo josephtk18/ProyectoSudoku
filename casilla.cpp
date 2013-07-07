@@ -68,34 +68,34 @@ void Casilla::setGrafic(int i){
     //Funcion que asigna la imagen del numero al QLabel
     switch (i) {
     case 0:
-        this->setPixmap(QPixmap("0.jpg"));
+        this->setPixmap(QPixmap("imagenes/0.jpg"));
         break;
     case 1:
-        this->setPixmap(QPixmap("1.jpg"));
+        this->setPixmap(QPixmap("imagenes/1.jpg"));
         break;
     case 2:
-        this->setPixmap(QPixmap("2.jpg"));
+        this->setPixmap(QPixmap("imagenes/2.jpg"));
         break;
     case 3:
-        this->setPixmap(QPixmap("3.jpg"));
+        this->setPixmap(QPixmap("imagenes/3.jpg"));
         break;
     case 4:
-        this->setPixmap(QPixmap("4.jpg"));
+        this->setPixmap(QPixmap("imagenes/4.jpg"));
         break;
     case 5:
-        this->setPixmap(QPixmap("5.jpg"));
+        this->setPixmap(QPixmap("imagenes/5.jpg"));
         break;
     case 6:
-        this->setPixmap(QPixmap("6.jpg"));
+        this->setPixmap(QPixmap("imagenes/6.jpg"));
         break;
     case 7:
-        this->setPixmap(QPixmap("7.jpg"));
+        this->setPixmap(QPixmap("imagenes/7.jpg"));
         break;
     case 8:
-        this->setPixmap(QPixmap("8.jpg"));
+        this->setPixmap(QPixmap("imagenes/8.jpg"));
         break;
     case 9:
-        this->setPixmap(QPixmap("9.jpg"));
+        this->setPixmap(QPixmap("imagenes/9.jpg"));
         break;
     default:
         break;

@@ -92,6 +92,19 @@
      <string>Cargar Partida</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="Btn_menu">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>300</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Regresar al menú</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

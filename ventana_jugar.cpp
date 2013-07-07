@@ -46,3 +46,10 @@ void Ventana_Jugar::on_Btn_cargar_clicked()
 {
 
 }
+
+void Ventana_Jugar::on_Btn_menu_clicked()
+{
+    Ventana_principal *v = new Ventana_principal();
+    close();
+    v->show();
+}

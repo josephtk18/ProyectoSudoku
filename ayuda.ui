@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>394</width>
-    <height>251</height>
+    <height>365</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,6 +25,19 @@
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt; font-weight:600;&quot;&gt;Ayuda&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="leyenda">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>80</y>
+      <width>261</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;- El sudoku se presenta normalmente como una tabla &lt;br/&gt;de 9 × 9, compuesta por subtablas de 3 × 3 deno-&lt;br/&gt;minadas &amp;quot;regiones&amp;quot; (también se le llaman &amp;quot;cajas&amp;quot; &lt;br/&gt;o &amp;quot;bloques&amp;quot;).&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- Algunas celdas ya contienen números, conocidos &lt;br/&gt;como &amp;quot;números dados&amp;quot; (o a veces &amp;quot;pistas&amp;quot;). El ob-&lt;br/&gt;jetivo es rellenar las celdas vacías, con un número &lt;br/&gt;en cada una de ellas, de tal forma que cada co-&lt;br/&gt;lumna, fila y región contenga los números 1–9 sólo &lt;br/&gt;una vez.&lt;/p&gt;&lt;p&gt;- Además, cada número de la solución aparece sólo &lt;br/&gt;una vez en cada una de las tres &amp;quot;direcciones&amp;quot;, de &lt;br/&gt;ahí el &amp;quot;los números deben estar solos&amp;quot; que evoca el &lt;br/&gt;nombre del juego.&lt;br/&gt;&lt;br/&gt;Fuente: Wikipedia.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

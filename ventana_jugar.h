@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <sudoku.h>
+#include <ventana_principal.h>
 
 namespace Ui {
 class Ventana_Jugar;
@@ -25,6 +26,8 @@ private slots:
     void on_Btn_dificil_clicked();
 
     void on_Btn_cargar_clicked();
+
+    void on_Btn_menu_clicked();
 
 private:
     Ui::Ventana_Jugar *ui;

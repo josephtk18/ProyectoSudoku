@@ -18,7 +18,7 @@ Ventana_Jugar::~Ventana_Jugar()
 }
 
 void Ventana_Jugar::setBackgroundImage(){
-    QPixmap bg("Imagenes/yingyang.jpg");
+    QPixmap bg("Imagenes/yingyangsudoku.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);

@@ -53,21 +53,56 @@ Guayaquil - \today
 
 \section{Introducción}
 
-Sudoku es un pasatiempo que se publicó por primera vez a finales de la década de 1970 y se popularizó en Japón en 1986, dándose a conocer en el ámbito internacional en 2005 cuando numerosos periódicos empezaron a publicarlo en su sección de pasatiempos. El objetivo del sudoku es rellenar una cuadrícula de 9 x 9 celdas (81 casillas) dividida en subcuadrículas de 3 x 3 (también llamadas "cajas" o "regiones") con las cifras del 1 al 9 partiendo de algunos números ya dispuestos en algunas de las celdas, y lo característico del juego es llenar las casillas vacías con números que no se  repitan en una misma fila, columna o subcuadrícula. 
+Sudoku es un pasatiempo que se publicó por primera vez a finales de la década de 1970 y se popularizó en Japón en 1986, dándose a conocer en el ámbito internacional en 2005 cuando numerosos periódicos empezaron a publicarlo en su sección de pasatiempos. El objetivo del sudoku es rellenar una cuadrícula de 9 x 9 celdas (81 casillas) dividida en subcuadrículas de 3 x 3 (también llamadas "cajas" o "regiones") con las cifras del 1 al 9 partiendo de algunos números ya dispuestos en algunas de las celdas, y lo característico del juego es llenar las casillas vacías con números que no se  repitan en una misma fila, columna o subcuadrícula. \\\\
+\begin{center}
+		\includegraphics[height=8cm,width=10cm]{sdk.png}
+	\end{center}
+	
 	
 
-\section{Controles\\}
-
-El juego no posee controles muy sofisticados, ya que solo se colocan dígitos del 1 al 9 en las casillas que se requieren llenar.
-Por estar aún el juego en su proceso de desarrollo, no consta con los controles para llenar cada casilla.
-Actualmente el juego solo posee un botón ‘validar’ el cual valida todas las casillas del tablero cumpliendo las restricciones de fila, columna y subcuadrícula.
-
-
-\section{Interfaz}
-La interfaz del juego; por estar aún en desarrollo, posee una interfaz muy casual, mostrando el tablero con sus  81 casillas teniendo algunas previamente llenas y otras vacías para ser completadas según la regla del juego.
 
 
 
+\section{Recorriendo Sudoku JCK}
+
+	Nuestro Sudoku muestra en primera instacia la siguiente ventana:
+	\begin{center}
+		\includegraphics[height=6cm,width=8cm]{ventana_principal.png}
+	\end{center}
+
+	\subsection{Iniciar Partida}
+		Esta opcion dará inicio a la partida correspondiente a jugar.
+
+	\subsection{Estadísticas}
+		Esta opción mostrará el ranking de los jugadores de mejor puntaje en el Sudoku.
+
+	\subsection{Ayuda}
+		Aquí se mostrará las reglas y controles necesarios del Sudoku.
+
+	\subsection{Acerca De}
+		En esta opción corresponde a la información intelectual del juego.
+
+	\subsection{Salir}
+		Como su nombre lo indica, cerrará la aplición.
+
+\section{Recorriendo el Juego.}
+	Al haber escogido la opción 'Iniciar Partida', la siguiente ventana de niveles se despliega:
+		\begin{center}
+			\includegraphics[height=6cm,width=8cm]{ventana_niveles.png}
+		\end{center}
+	La dificultad se basa en restar la cantidad de números al tablero, la cantidad de casillas blancas son:
+		\\Facil   - 
+		\\Medio - 
+		\\Dificil  - 
+		\\Tambien se muestra la opcion 'Cargar Partida' la cual muestra una partida guardada previamente.	
+		\\\\Una vez escogido el nivel, aparecerá la ventana del sudoku lista para ser jugada:
+		\begin{center}
+			\includegraphics[height=6cm,width=8cm]{ventana_sudoku.png}
+		\end{center}
+
+
+
+		
 
 
 \end{document}

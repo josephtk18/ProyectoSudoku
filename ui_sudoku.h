@@ -44,7 +44,7 @@ public:
     {
         if (Sudoku->objectName().isEmpty())
             Sudoku->setObjectName(QStringLiteral("Sudoku"));
-        Sudoku->resize(681, 678);
+        Sudoku->resize(681, 639);
         centralWidget = new QWidget(Sudoku);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         Btn_validar = new QPushButton(centralWidget);
@@ -72,7 +72,7 @@ public:
         line->setFrameShadow(QFrame::Sunken);
         horizontalLayoutWidget = new QWidget(centralWidget);
         horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(10, 560, 661, 80));
+        horizontalLayoutWidget->setGeometry(QRect(20, 560, 551, 61));
         gridTeclado = new QHBoxLayout(horizontalLayoutWidget);
         gridTeclado->setSpacing(6);
         gridTeclado->setContentsMargins(11, 11, 11, 11);

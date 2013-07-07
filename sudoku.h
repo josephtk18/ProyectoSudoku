@@ -8,13 +8,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <tablero.h>
-#include <digito.h>
 #include <simplecrypt.h>
 #include <time.h>
 #include <iostream>
 #include <QDebug>
 #include <QFile>
 #include <QMessageBox>
+#include <digito.h>
 
 namespace Ui {
 class Sudoku;
@@ -26,15 +26,16 @@ class Sudoku : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Sudoku(QWidget *parent = 0);
+    explicit Sudoku(int nivel,QWidget *parent = 0);
     void inicializarMatriz();
     void pasarTableroAMatriz(Casilla* casillas[]);
     void inicializarTablaUI(Casilla *casillas[]);
     void pasarMatrizAUI();
     void pasarUIAMatriz();
-    void iniciarTeclado();
     QString pasarMatrizAString();
     void pasarStringAMatriz(QString linea);
+    void ocultarCasillas(int nivel, Tablero *t);
+    void iniciarTeclado();
     bool validacion(int fila, int columna);
     bool validarFila(int fila, int columna);
     bool validarColumna(int fila, int columna);
@@ -51,7 +52,6 @@ private slots:
 private:
     Ui::Sudoku *ui;
     int matriz[9][9];
-    Casilla *CasSelec;
     Digito *Teclado[9];
 
 };

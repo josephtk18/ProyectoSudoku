@@ -7,7 +7,7 @@ Ayuda::Ayuda(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Ayuda");
-    setWindowIcon(QIcon("logo.jpg"));
+    setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
 }
@@ -18,7 +18,7 @@ Ayuda::~Ayuda()
 }
 
 void Ayuda::setBackgroundImage(){
-    QPixmap bg("imagenes/yingyang.jpg");
+    QPixmap bg("Imagenes/yingyang.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);

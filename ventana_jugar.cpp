@@ -7,7 +7,7 @@ Ventana_Jugar::Ventana_Jugar(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Iniciar Partida");
-    setWindowIcon(QIcon("logo.jpg"));
+    setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
 }
@@ -18,7 +18,7 @@ Ventana_Jugar::~Ventana_Jugar()
 }
 
 void Ventana_Jugar::setBackgroundImage(){
-    QPixmap bg("imagenes/yingyang.jpg");
+    QPixmap bg("Imagenes/yingyang.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);
@@ -27,19 +27,23 @@ void Ventana_Jugar::setBackgroundImage(){
 
 void Ventana_Jugar::on_Btn_facil_clicked()
 {
-    Sudoku *s = new Sudoku();
+    Sudoku *s = new Sudoku(1);
     close();
     s->show();
 }
 
 void Ventana_Jugar::on_Btn_normal_clicked()
 {
-
+    Sudoku *s = new Sudoku(2);
+    close();
+    s->show();
 }
 
 void Ventana_Jugar::on_Btn_dificil_clicked()
 {
-
+    Sudoku *s = new Sudoku(3);
+    close();
+    s->show();
 }
 
 void Ventana_Jugar::on_Btn_cargar_clicked()

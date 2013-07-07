@@ -2,21 +2,21 @@
 #include "ui_sudoku.h"
 
 
-Sudoku::Sudoku(QWidget *parent) :
+Sudoku::Sudoku(int nivel, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Sudoku)
 {
     ui->setupUi(this);
     Tablero* t = new Tablero();
-    setWindowIcon(QIcon("logo.jpg"));
+    setWindowIcon(QIcon("Imagenes/logo.jpg"));
 
     t->generarTablero();
     inicializarMatriz();
     pasarTableroAMatriz(t->casillas);
     inicializarTablaUI(t->casillas);
+    ocultarCasillas(nivel,t);
     pasarMatrizAUI();
     iniciarTeclado();
-
 }
 
 Sudoku::~Sudoku()
@@ -39,13 +39,6 @@ void Sudoku::pasarTableroAMatriz(Casilla *casillas[]){
             matriz[i][j]=casillas[pos]->getContenido();
             pos++;
         }
-    }
-}
-
-void Sudoku::iniciarTeclado(){
-    for(int i=0; i<9; i++){
-        Teclado[i]=new Digito(i+1);
-        ui->gridTeclado->addWidget(Teclado[i]);
     }
 }
 
@@ -163,9 +156,40 @@ void Sudoku::on_Btn_Cargar_clicked(){
     }
 }
 
+void Sudoku::ocultarCasillas(int nivel, Tablero *t){
+    int cont,tmp;
+    QTime time = QTime::currentTime();
+    qsrand((uint)time.msec());
 
+    if(nivel==1) tmp=4;
+    if(nivel==2) tmp=5;
+    if(nivel==3) tmp=7;
+    cont=tmp;
+    for(int bloque=1;bloque<=9;bloque++){
+        while(cont>0){
+            for(int i=0;i<9;i++){
+                for(int j=0;j<9;j++){
+                    if(cont>0){
+                        if(t->casillas[0]->buscarRegion(i+1,j+1)==bloque){
+                            if(t->randInt(0,1)==1){
+                                matriz[i][j]=0;
+                                cont--;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        cont=tmp;
+    }
+}
 
-
+void Sudoku::iniciarTeclado(){
+    for(int i=0; i<9; i++){
+        Teclado[i]=new Digito(i+1);
+        ui->gridTeclado->addWidget(Teclado[i]);
+    }
+}
 
 
 bool Sudoku::validacion(int fila, int columna){

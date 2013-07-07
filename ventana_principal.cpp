@@ -8,10 +8,9 @@ Ventana_principal::Ventana_principal(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Sudoku");
-    setWindowIcon(QIcon("logo.jpg"));
+    setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
-    //setWindowFlags(Qt::FramelessWindowHint);
 }
 
 Ventana_principal::~Ventana_principal()
@@ -20,7 +19,7 @@ Ventana_principal::~Ventana_principal()
 }
 
 void Ventana_principal::setBackgroundImage(){
-    QPixmap bg("imagenes/yingyang.jpg");
+    QPixmap bg("Imagenes/yingyang.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);

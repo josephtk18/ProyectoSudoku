@@ -37,3 +37,5 @@
 *.pro.user.3dd2536
 *.pro.user.81922ac
 *.o
+*.Debug
+*.Release

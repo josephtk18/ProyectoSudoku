@@ -7,6 +7,7 @@ Ayuda::Ayuda(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Ayuda");
+    setWindowIcon(QIcon("logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
 }

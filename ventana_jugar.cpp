@@ -7,6 +7,7 @@ Ventana_Jugar::Ventana_Jugar(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Iniciar Partida");
+    setWindowIcon(QIcon("logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
 }

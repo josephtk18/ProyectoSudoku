@@ -7,6 +7,7 @@ AcercaDe::AcercaDe(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Acerca De");
+    setWindowIcon(QIcon("logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
 }

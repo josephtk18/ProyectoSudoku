@@ -48,8 +48,7 @@ private slots:
 
 private:
     Ui::Sudoku *ui;
-    int matriz[9][9];
-    Casilla *CasSelect;
+    int matriz[9][9];    
 
 };
 

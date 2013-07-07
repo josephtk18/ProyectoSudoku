@@ -20,9 +20,6 @@ public:
     void cambiarOrdenBloques(int B1[], int B2[], int B3[]);
     int randInt(int min, int max);
     Casilla *casillas[81];
-
-//private:
-    //Casilla *casillas[81];
 };
 
 #endif // TABLERO_H

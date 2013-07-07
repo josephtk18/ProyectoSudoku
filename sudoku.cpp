@@ -8,7 +8,7 @@ Sudoku::Sudoku(QWidget *parent) :
 {
     ui->setupUi(this);
     Tablero* t = new Tablero();
-    SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
+    setWindowIcon(QIcon("logo.jpg"));
 
     t->generarTablero();
     inicializarMatriz();

@@ -8,6 +8,7 @@ Ventana_principal::Ventana_principal(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Sudoku");
+    setWindowIcon(QIcon("logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
     //setWindowFlags(Qt::FramelessWindowHint);

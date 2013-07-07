@@ -8,7 +8,7 @@ Casilla::Casilla(int cont, int f, int c, int reg){
     disponible=true;
     setMinimumSize(50,50);
     setGrafic(cont);
-    setVisible(true);
+    //setVisible(true);
 
 }
 

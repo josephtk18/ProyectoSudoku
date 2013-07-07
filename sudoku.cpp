@@ -7,7 +7,7 @@ Sudoku::Sudoku(int nivel, QWidget *parent) :
     ui(new Ui::Sudoku)
 {
     ui->setupUi(this);
-    setWindowTitle("Iniciar Partida");
+    setWindowTitle("Sudoku");
     setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setFixedSize(width(),height());
 
@@ -116,9 +116,9 @@ void Sudoku::ocultarCasillas(int nivel, Tablero *t){
     QTime time = QTime::currentTime();
     qsrand((uint)time.msec());
 
-    if(nivel==1) tmp=4;
+    if(nivel==1) tmp=3;
     if(nivel==2) tmp=5;
-    if(nivel==3) tmp=7;
+    if(nivel==3) tmp=6;
     cont=tmp;
     for(int bloque=1;bloque<=9;bloque++){
         while(cont>0){
@@ -141,109 +141,108 @@ void Sudoku::ocultarCasillas(int nivel, Tablero *t){
 
 void Sudoku::pasarMatrizAUI(){
     Casilla *cas;
+    int i1=0,i2=0,i3=0,i4=0,i5=0,i6=0,i7=0,i8=0,i9=0,j1=0,j2=0,j3=0,j4=0,j5=0,j6=0,j7=0,j8=0,j9=0;
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
             int region=cas->buscarRegion(i+1,j+1);
             if(region==1){
-                int i1=0,j1=0;
                 cas = (Casilla*)(ui->bloque1->itemAtPosition(i1,j1)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j1++;
-                if(j1==2){
+                if(j1==3){
                     i1++;
                     j1=0;
                 }
             }
             if(region==2){
-                int i2=0,j2=0;
                 cas = (Casilla*)(ui->bloque2->itemAtPosition(i2,j2)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j2++;
-                if(j2==2){
+                if(j2==3){
                     i2++;
                     j2=0;
                 }
             }
             if(region==3){
-                int i3=0,j3=0;
                 cas = (Casilla*)(ui->bloque3->itemAtPosition(i3,j3)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j3++;
-                if(j3==2){
+                if(j3==3){
                     i3++;
                     j3=0;
                 }
             }
             if(region==4){
-                int i4=0,j4=0;
                 cas = (Casilla*)(ui->bloque4->itemAtPosition(i4,j4)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j4++;
-                if(j4==2){
+                if(j4==3){
                     i4++;
                     j4=0;
                 }
             }
             if(region==5){
-                int i5=0,j5=0;
                 cas = (Casilla*)(ui->bloque5->itemAtPosition(i5,j5)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j5++;
-                if(j5==2){
+                if(j5==3){
                     i5++;
                     j5=0;
                 }
             }
             if(region==6){
-                int i6=0,j6=0;
                 cas = (Casilla*)(ui->bloque6->itemAtPosition(i6,j6)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j6++;
-                if(j6==2){
+                if(j6==3){
                     i6++;
                     j6=0;
                 }
             }
             if(region==7){
-                int i7=0,j7=0;
                 cas = (Casilla*)(ui->bloque7->itemAtPosition(i7,j7)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j7++;
-                if(j7==2){
+                if(j7==3){
                     i7++;
                     j7=0;
                 }
             }
             if(region==8){
-                int i8=0,j8=0;
                 cas = (Casilla*)(ui->bloque8->itemAtPosition(i8,j8)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j8++;
-                if(j8==2){
+                if(j8==3){
                     i8++;
                     j8=0;
                 }
             }
             if(region==9){
-                int i9=0,j9=0;
                 cas = (Casilla*)(ui->bloque9->itemAtPosition(i9,j9)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
                 j9++;
-                if(j9==2){
+                if(j9==3){
                     i9++;
                     j9=0;
                 }
             }
         }
+    }
+}
+
+void Sudoku::iniciarTeclado(){
+    for(int i=0; i<9; i++){
+        Teclado[i]=new Digito(i+1);
+        ui->gridTeclado->addWidget(Teclado[i]);
     }
 }
 
@@ -450,12 +449,7 @@ void Sudoku::on_Btn_Cargar_clicked(){
 
 
 
-void Sudoku::iniciarTeclado(){
-    for(int i=0; i<9; i++){
-        Teclado[i]=new Digito(i+1);
-        ui->gridTeclado->addWidget(Teclado[i]);
-    }
-}
+
 
 
 

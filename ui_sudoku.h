@@ -87,7 +87,7 @@ public:
         Btn_Cargar->setGeometry(QRect(590, 90, 75, 23));
         line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
-        line->setGeometry(QRect(0, 570, 681, 16));
+        line->setGeometry(QRect(0, 570, 581, 16));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
         horizontalLayoutWidget = new QWidget(centralWidget);

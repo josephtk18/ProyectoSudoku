@@ -28,7 +28,7 @@ public:
     explicit Sudoku(QWidget *parent = 0);
     void inicializarMatriz();
     void pasarTableroAMatriz(Casilla* casillas[]);
-    void inicializarTablaUI();
+    void inicializarTablaUI(Casilla *casillas[]);
     void pasarMatrizAUI();
     void pasarUIAMatriz();
     QString pasarMatrizAString();
@@ -48,7 +48,6 @@ private slots:
 
 private:
     Ui::Sudoku *ui;
-    QLineEdit *cuadro[81];
     int matriz[9][9];
     Casilla *CasSelect;
 

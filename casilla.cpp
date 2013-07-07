@@ -6,8 +6,9 @@ Casilla::Casilla(int cont, int f, int c, int reg){
     columna=c;
     region=reg;
     disponible=true;
-    setMaximumHeight(100);
-    setMaximumWidth(100);
+    setMinimumSize(50,50);
+    setGrafic(cont);
+    setVisible(true);
 
 }
 
@@ -63,7 +64,41 @@ int Casilla::buscarRegion(int f, int c){
     }
 }
 
-/*void Casilla::SetGrafic(int i){
+void Casilla::setGrafic(int i){
     //Funcion que asigna la imagen del numero al QLabel
-}*/
+    switch (i) {
+    case 0:
+        this->setPixmap(QPixmap(":/imagenes/0.jpg"));
+        break;
+    case 1:
+        this->setPixmap(QPixmap(":/imagenes/1.jpg"));
+        break;
+    case 2:
+        this->setPixmap(QPixmap(":/imagenes/2.jpg"));
+        break;
+    case 3:
+        this->setPixmap(QPixmap(":/imagenes/3.jpg"));
+        break;
+    case 4:
+        this->setPixmap(QPixmap(":/imagenes/4.jpg"));
+        break;
+    case 5:
+        this->setPixmap(QPixmap(":/imagenes/5.jpg"));
+        break;
+    case 6:
+        this->setPixmap(QPixmap(":/imagenes/6.jpg"));
+        break;
+    case 7:
+        this->setPixmap(QPixmap(":/imagenes/7.jpg"));
+        break;
+    case 8:
+        this->setPixmap(QPixmap(":/imagenes/8.jpg"));
+        break;
+    case 9:
+        this->setPixmap(QPixmap(":/imagenes/9.jpg"));
+        break;
+    default:
+        break;
+    }
+}
 

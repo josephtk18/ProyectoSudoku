@@ -13,7 +13,7 @@ Sudoku::Sudoku(QWidget *parent) :
     t->generarTablero();
     inicializarMatriz();
     pasarTableroAMatriz(t->casillas);
-    inicializarTablaUI();
+    inicializarTablaUI(t->casillas);
     pasarMatrizAUI();
 }
 
@@ -40,36 +40,36 @@ void Sudoku::pasarTableroAMatriz(Casilla *casillas[]){
     }
 }
 
-void Sudoku::inicializarTablaUI(){
+void Sudoku::inicializarTablaUI(Casilla *casillas[]){
     int z = 0;
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
-            cuadro[z] = new QLineEdit();
-            ui->gridTabla->addWidget(cuadro[z],i,j);
+            ui->gridTabla->addWidget(casillas[z],i,j);
             z++;
         }
     }
 }
 
 void Sudoku::pasarMatrizAUI(){
-    QLineEdit *ledit;
+    Casilla *cas;
     for(int i=0; i<9; i++)
     {
         for(int j=0; j<9; j++)
         {
-            ledit = (QLineEdit*)(ui->gridTabla->itemAtPosition(i,j)->widget());
-            ledit->setText(QString::number(matriz[i][j]));
+            cas = (Casilla*)(ui->gridTabla->itemAtPosition(i,j)->widget());
+            cas->setContenido(matriz[i][j]);
+            cas->setGrafic(matriz[i][j]);
         }
     }
 }
 
 void Sudoku::pasarUIAMatriz(){
-    QLineEdit *ledit;
+    Casilla *cas;
     int cont;
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
-            ledit = (QLineEdit*)(ui->gridTabla->itemAtPosition(i,j)->widget());
-            cont = ledit->text().toInt();
+            cas = (Casilla*)(ui->gridTabla->itemAtPosition(i,j)->widget());
+            cont = cas->getContenido();
             matriz[i][j]=cont;
         }
     }

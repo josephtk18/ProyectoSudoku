@@ -2,6 +2,7 @@
 #define CASILLA_H
 
 #include <QLabel>
+#include <QPixmap>
 
 class Casilla : public QLabel
 {
@@ -18,6 +19,7 @@ public:
     void setRegion(int r);
     void setDisponible(bool d);
     int buscarRegion(int f, int c);
+    void setGrafic(int i);
 
 private:
     int contenido, fila, columna, region;

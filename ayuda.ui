@@ -17,11 +17,48 @@
    <widget class="QLabel" name="titulo">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>10</y>
+      <x>170</x>
+      <y>30</y>
       <width>121</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>140</green>
+          <blue>140</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>140</green>
+          <blue>140</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>112</red>
+          <green>111</green>
+          <blue>113</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:28pt; font-weight:600;&quot;&gt;Ayuda&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -30,14 +67,51 @@
    <widget class="QLabel" name="leyenda">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>80</y>
+      <x>110</x>
+      <y>110</y>
       <width>261</width>
       <height>241</height>
      </rect>
     </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>140</green>
+          <blue>140</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>140</green>
+          <blue>140</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>112</red>
+          <green>111</green>
+          <blue>113</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;- El sudoku se presenta normalmente como una tabla &lt;br/&gt;de 9 × 9, compuesta por subtablas de 3 × 3 deno-&lt;br/&gt;minadas &amp;quot;regiones&amp;quot; (también se le llaman &amp;quot;cajas&amp;quot; &lt;br/&gt;o &amp;quot;bloques&amp;quot;).&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- Algunas celdas ya contienen números, conocidos &lt;br/&gt;como &amp;quot;números dados&amp;quot; (o a veces &amp;quot;pistas&amp;quot;). El ob-&lt;br/&gt;jetivo es rellenar las celdas vacías, con un número &lt;br/&gt;en cada una de ellas, de tal forma que cada co-&lt;br/&gt;lumna, fila y región contenga los números 1–9 sólo &lt;br/&gt;una vez.&lt;/p&gt;&lt;p&gt;- Además, cada número de la solución aparece sólo &lt;br/&gt;una vez en cada una de las tres &amp;quot;direcciones&amp;quot;, de &lt;br/&gt;ahí el &amp;quot;los números deben estar solos&amp;quot; que evoca el &lt;br/&gt;nombre del juego.&lt;br/&gt;&lt;br/&gt;Fuente: Wikipedia.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;- El sudoku se presenta normalmente como una&lt;br/&gt;tabla de 9 × 9, compuesta por subtablas de 3x3&lt;br/&gt;denominadas &amp;quot;regiones&amp;quot; (también se le llaman &lt;br/&gt;&amp;quot;cajas&amp;quot; o &amp;quot;bloques&amp;quot;).&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;- Algunas celdas ya contienen números, cono-&lt;br/&gt;cidos como &amp;quot;números dados&amp;quot; (o a veces &amp;quot;pistas&amp;quot;).&lt;br/&gt;El objetivo es rellenar las celdas vacías, con un &lt;br/&gt;número en cada una de ellas, de tal forma que &lt;br/&gt;cada columna, fila y región contenga los números &lt;br/&gt;1–9 sólo una vez.&lt;/p&gt;&lt;p&gt;- Además, cada número de la solución aparece &lt;br/&gt;sólo una vez en cada una de las tres &amp;quot;direccio-&lt;br/&gt;nes&amp;quot;, de ahí el &amp;quot;los números deben estar solos&amp;quot; &lt;br/&gt;que evoca el nombre del juego.&lt;br/&gt;&lt;br/&gt;Fuente: Wikipedia.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

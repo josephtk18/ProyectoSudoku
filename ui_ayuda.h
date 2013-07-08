@@ -40,10 +40,24 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         titulo = new QLabel(centralwidget);
         titulo->setObjectName(QStringLiteral("titulo"));
-        titulo->setGeometry(QRect(150, 10, 121, 51));
+        titulo->setGeometry(QRect(170, 30, 121, 51));
+        QPalette palette;
+        QBrush brush(QColor(0, 140, 140, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        QBrush brush1(QColor(112, 111, 113, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        titulo->setPalette(palette);
         leyenda = new QLabel(centralwidget);
         leyenda->setObjectName(QStringLiteral("leyenda"));
-        leyenda->setGeometry(QRect(70, 80, 261, 241));
+        leyenda->setGeometry(QRect(110, 110, 261, 241));
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        leyenda->setPalette(palette1);
         Ayuda->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Ayuda);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -62,7 +76,7 @@ public:
     {
         Ayuda->setWindowTitle(QApplication::translate("Ayuda", "MainWindow", 0));
         titulo->setText(QApplication::translate("Ayuda", "<html><head/><body><p><span style=\" font-size:28pt; font-weight:600;\">Ayuda</span></p></body></html>", 0));
-        leyenda->setText(QApplication::translate("Ayuda", "<html><head/><body><p align=\"justify\">- El sudoku se presenta normalmente como una tabla <br/>de 9 \303\227 9, compuesta por subtablas de 3 \303\227 3 deno-<br/>minadas &quot;regiones&quot; (tambi\303\251n se le llaman &quot;cajas&quot; <br/>o &quot;bloques&quot;).</p><p align=\"justify\">- Algunas celdas ya contienen n\303\272meros, conocidos <br/>como &quot;n\303\272meros dados&quot; (o a veces &quot;pistas&quot;). El ob-<br/>jetivo es rellenar las celdas vac\303\255as, con un n\303\272mero <br/>en cada una de ellas, de tal forma que cada co-<br/>lumna, fila y regi\303\263n contenga los n\303\272meros 1\342\200\2239 s\303\263lo <br/>una vez.</p><p>- Adem\303\241s, cada n\303\272mero de la soluci\303\263n aparece s\303\263lo <br/>una vez en cada una de las tres &quot;direcciones&quot;, de <br/>ah\303\255 el &quot;los n\303\272meros deben estar solos&quot; que evoca el <br/>nombre del juego.<br/><br/>Fuente: Wikipedia.</p></body></html>", 0));
+        leyenda->setText(QApplication::translate("Ayuda", "<html><head/><body><p align=\"justify\">- El sudoku se presenta normalmente como una<br/>tabla de 9 \303\227 9, compuesta por subtablas de 3x3<br/>denominadas &quot;regiones&quot; (tambi\303\251n se le llaman <br/>&quot;cajas&quot; o &quot;bloques&quot;).</p><p align=\"justify\">- Algunas celdas ya contienen n\303\272meros, cono-<br/>cidos como &quot;n\303\272meros dados&quot; (o a veces &quot;pistas&quot;).<br/>El objetivo es rellenar las celdas vac\303\255as, con un <br/>n\303\272mero en cada una de ellas, de tal forma que <br/>cada columna, fila y regi\303\263n contenga los n\303\272meros <br/>1\342\200\2239 s\303\263lo una vez.</p><p>- Adem\303\241s, cada n\303\272mero de la soluci\303\263n aparece <br/>s\303\263lo una vez en cada una de las tres &quot;direccio-<br/>nes&quot;, de ah\303\255 el &quot;los n\303\272meros deben estar solos&quot; <br/>que evoca el nombre del juego.<br/><br/>Fuente: Wikipedia.</p></body></html>", 0));
     } // retranslateUi
 
 };

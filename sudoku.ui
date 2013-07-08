@@ -55,19 +55,6 @@
      <string>Guardar</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="Btn_Cargar">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>90</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cargar</string>
-    </property>
-   </widget>
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>

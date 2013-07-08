@@ -35,15 +35,29 @@ public:
     {
         if (AcercaDe->objectName().isEmpty())
             AcercaDe->setObjectName(QStringLiteral("AcercaDe"));
-        AcercaDe->resize(395, 245);
+        AcercaDe->resize(395, 274);
         centralwidget = new QWidget(AcercaDe);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         acercaDe = new QLabel(centralwidget);
         acercaDe->setObjectName(QStringLiteral("acercaDe"));
-        acercaDe->setGeometry(QRect(100, 0, 191, 61));
+        acercaDe->setGeometry(QRect(120, 20, 191, 61));
+        QPalette palette;
+        QBrush brush(QColor(0, 140, 140, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        QBrush brush1(QColor(112, 111, 113, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        acercaDe->setPalette(palette);
         contenido = new QLabel(centralwidget);
         contenido->setObjectName(QStringLiteral("contenido"));
-        contenido->setGeometry(QRect(50, 60, 311, 151));
+        contenido->setGeometry(QRect(50, 100, 311, 151));
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        contenido->setPalette(palette1);
         AcercaDe->setCentralWidget(centralwidget);
         menubar = new QMenuBar(AcercaDe);
         menubar->setObjectName(QStringLiteral("menubar"));

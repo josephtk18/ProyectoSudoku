@@ -12,18 +12,18 @@ public:
     int getFila();
     int getColumna();
     int getRegion();
-    bool isDisponible();
+    bool isOcupada();
     void setContenido(int cont);
     void setFila(int f);
     void setColumna(int c);
     void setRegion(int r);
-    void setDisponible(bool d);
+    void setOcupada(bool d);
     int buscarRegion(int f, int c);
     void setGrafic(int i);
 
 private:
     int contenido, fila, columna, region;
-    bool disponible;
+    bool ocupada;
 };
 
 #endif // CASILLA_H

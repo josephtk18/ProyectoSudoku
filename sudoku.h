@@ -26,7 +26,7 @@ class Sudoku : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit Sudoku(int nivel,QWidget *parent = 0);
+    explicit Sudoku(int nivel,bool cargar,QWidget *parent = 0);
     void inicializarMatriz();
     void pasarTableroAMatriz(Casilla* casillas[]);
     void inicializarTablasUI(Casilla *casillas[]);
@@ -36,6 +36,7 @@ public:
     void pasarStringAMatriz(QString linea);
     void ocultarCasillas(int nivel, Tablero *t);
     void iniciarTeclado();
+    void cargarPartida();
     bool validacion(int fila, int columna);
     bool validarFila(int fila, int columna);
     bool validarColumna(int fila, int columna);
@@ -47,7 +48,6 @@ private slots:
 
     void on_Btn_Guardar_clicked();
 
-    void on_Btn_Cargar_clicked();
 
 private:
     Ui::Sudoku *ui;

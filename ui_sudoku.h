@@ -33,7 +33,6 @@ public:
     QWidget *gridLayoutWidget;
     QGridLayout *bloque1;
     QPushButton *Btn_Guardar;
-    QPushButton *Btn_Cargar;
     QFrame *line;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *gridTeclado;
@@ -82,9 +81,6 @@ public:
         Btn_Guardar = new QPushButton(centralWidget);
         Btn_Guardar->setObjectName(QStringLiteral("Btn_Guardar"));
         Btn_Guardar->setGeometry(QRect(590, 50, 75, 23));
-        Btn_Cargar = new QPushButton(centralWidget);
-        Btn_Cargar->setObjectName(QStringLiteral("Btn_Cargar"));
-        Btn_Cargar->setGeometry(QRect(590, 90, 75, 23));
         line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
         line->setGeometry(QRect(0, 570, 581, 16));
@@ -209,7 +205,6 @@ public:
         Sudoku->setWindowTitle(QApplication::translate("Sudoku", "Sudoku", 0));
         Btn_validar->setText(QApplication::translate("Sudoku", "Validar", 0));
         Btn_Guardar->setText(QApplication::translate("Sudoku", "Guardar", 0));
-        Btn_Cargar->setText(QApplication::translate("Sudoku", "Cargar", 0));
     } // retranslateUi
 
 };

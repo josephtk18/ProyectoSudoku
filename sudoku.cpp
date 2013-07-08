@@ -2,7 +2,7 @@
 #include "ui_sudoku.h"
 
 
-Sudoku::Sudoku(int nivel, QWidget *parent) :
+Sudoku::Sudoku(int nivel, bool cargar, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Sudoku)
 {
@@ -12,13 +12,17 @@ Sudoku::Sudoku(int nivel, QWidget *parent) :
     setFixedSize(width(),height());
 
     Tablero* t = new Tablero();
-    t->generarTablero();
     inicializarMatriz();
+    iniciarTeclado();
+    t->generarTablero();
     pasarTableroAMatriz(t->casillas);
     inicializarTablasUI(t->casillas);
     ocultarCasillas(nivel,t);
+    if(cargar){
+        cargarPartida();
+    }
     pasarMatrizAUI();
-    iniciarTeclado();
+
 }
 
 Sudoku::~Sudoku()
@@ -53,56 +57,56 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque2
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque2->addWidget(casillas[z],i,j);
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque3
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque3->addWidget(casillas[z],i,j);
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque4
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque4->addWidget(casillas[z],i,j);
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque5
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque5->addWidget(casillas[z],i,j);
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque6
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque6->addWidget(casillas[z],i,j);
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque7
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque7->addWidget(casillas[z],i,j);
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque8
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque8->addWidget(casillas[z],i,j);
             z++;
         }
     }
-    //Inicializo bloque1
+    //Inicializo bloque9
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             ui->bloque9->addWidget(casillas[z],i,j);
@@ -254,12 +258,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque1->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i][j]=cont;
         }
     }
     //Bloque 2
@@ -267,12 +266,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque2->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i][j+3]=cont;
         }
     }
     //Bloque 3
@@ -280,12 +274,8 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque3->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
+            matriz[i][j+6]=cont;
             c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
         }
     }
     //Bloque 4
@@ -293,12 +283,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque4->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i+3][j]=cont;
         }
     }
     //Bloque 5
@@ -306,12 +291,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque5->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i+3][j+3]=cont;
         }
     }
     //Bloque 6
@@ -319,12 +299,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque6->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i+3][j+6]=cont;
         }
     }
     //Bloque 7
@@ -332,12 +307,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque7->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i+6][j]=cont;
         }
     }
     //Bloque 8
@@ -345,12 +315,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque8->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i+6][j+3]=cont;
         }
     }
     //Bloque 9
@@ -358,12 +323,7 @@ void Sudoku::pasarUIAMatriz(){
         for(int j=0; j<3; j++){
             cas = (Casilla*)(ui->bloque9->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
-            matriz[f][c]=cont;
-            c++;
-            if(j==8){
-                f++;
-                c=0;
-            }
+            matriz[i+6][j+6]=cont;
         }
     }
 }
@@ -428,9 +388,9 @@ void Sudoku::on_Btn_Guardar_clicked(){
     }
 }
 
-void Sudoku::on_Btn_Cargar_clicked(){
+void Sudoku::cargarPartida(){
     SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
-    if (QMessageBox::Yes == QMessageBox::question(this, "Cargar", "Si carga la partida, se perderá la información actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
+    //if (QMessageBox::Yes == QMessageBox::question(this, "Cargar", "Si carga la partida, se perderá la información actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
             QFile archivo("partida.txt");
             if (archivo.exists("partida.txt")){
                 archivo.open(QFile::ReadOnly);
@@ -439,12 +399,12 @@ void Sudoku::on_Btn_Cargar_clicked(){
                 QString linea=crypto.decryptToString(crypt);
                 pasarStringAMatriz(linea);
                 pasarMatrizAUI();
-                QMessageBox::information(this,"Cargado!","La partida se ha cargado con éxito");
+                //QMessageBox::information(this,"Cargado!","La partida se ha cargado con éxito");
             } else {
                 QMessageBox::critical(this,"Error","No existe el archivo ");
             }
             archivo.close();
-    }
+    //}
 }
 
 

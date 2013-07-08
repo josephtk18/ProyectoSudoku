@@ -5,10 +5,10 @@ Casilla::Casilla(int cont, int f, int c, int reg){
     fila=f;
     columna=c;
     region=reg;
-    disponible=true;
+    ocupada=true;
     setMinimumSize(50,50);
     setGrafic(cont);
-    //setVisible(true);
+    setVisible(true);
 
 }
 
@@ -25,8 +25,8 @@ int Casilla::getColumna(){
 int Casilla::getRegion(){
    return this->region;
 }
-bool Casilla::isDisponible(){
-    return this->disponible;
+bool Casilla::isOcupada(){
+    return this->ocupada;
 }
 
 //SETTERS
@@ -42,8 +42,8 @@ void Casilla::setColumna(int c){
 void Casilla::setRegion(int r){
     this->region=r;
 }
-void Casilla::setDisponible(bool d){
-    this->disponible=d;
+void Casilla::setOcupada(bool d){
+    this->ocupada=d;
 }
 
 int Casilla::buscarRegion(int f, int c){

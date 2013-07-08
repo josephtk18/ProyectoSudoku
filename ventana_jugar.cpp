@@ -27,28 +27,30 @@ void Ventana_Jugar::setBackgroundImage(){
 
 void Ventana_Jugar::on_Btn_facil_clicked()
 {
-    Sudoku *s = new Sudoku(1);
+    Sudoku *s = new Sudoku(1,false);
     close();
     s->show();
 }
 
 void Ventana_Jugar::on_Btn_normal_clicked()
 {
-    Sudoku *s = new Sudoku(2);
+    Sudoku *s = new Sudoku(2,false);
     close();
     s->show();
 }
 
 void Ventana_Jugar::on_Btn_dificil_clicked()
 {
-    Sudoku *s = new Sudoku(3);
+    Sudoku *s = new Sudoku(3,false);
     close();
     s->show();
 }
 
 void Ventana_Jugar::on_Btn_cargar_clicked()
 {
-
+    Sudoku *s = new Sudoku(0,true);
+    close();
+    s->show();
 }
 
 void Ventana_Jugar::on_Btn_menu_clicked()

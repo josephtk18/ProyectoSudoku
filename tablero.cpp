@@ -32,7 +32,7 @@ void Tablero::generarTablero(){
             cont=randInt(1,9);
             if(!hayRepetidoFila(casillas[i],cont)){
                 casillas[i]->setContenido(cont);
-                casillas[i]->setDisponible(false);
+                casillas[i]->setOcupada(true);
                 if(col>=1 && col<=3){
                     bloque1[pos_bloque]=cont;
                     pos_bloque++;
@@ -63,7 +63,7 @@ void Tablero::generarTablero(){
         for(int i=0; i<81; i++){
             if(casillas[i]->getFila()==fila_actual){
                 casillas[i]->setContenido(fila[pos_bloque]);
-                casillas[i]->setDisponible(false);
+                casillas[i]->setOcupada(true);
                 pos_bloque++;
             }
         }

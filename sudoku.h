@@ -43,6 +43,7 @@ public:
     bool validarFila(int fila, int columna);
     bool validarColumna(int fila, int columna);
     bool validarBloque(int fila, int columna);
+    void guardarGanadores();
     ~Sudoku();
 
 private slots:

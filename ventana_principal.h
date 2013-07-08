@@ -8,6 +8,7 @@
 #include <acercade.h>
 #include <ventana_jugar.h>
 #include <ayuda.h>
+#include <estadisticas.h>
 
 namespace Ui {
 class Ventana_principal;

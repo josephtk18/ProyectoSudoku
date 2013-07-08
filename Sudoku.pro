@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     acercade.cpp \
     ayuda.cpp \
     ventana_jugar.cpp \
-    digito.cpp
+    digito.cpp \
+    estadisticas.cpp
 
 HEADERS  += sudoku.h \
     casilla.h \
@@ -31,10 +32,12 @@ HEADERS  += sudoku.h \
     acercade.h \
     ayuda.h \
     ventana_jugar.h \
-    digito.h
+    digito.h \
+    estadisticas.h
 
 FORMS    += sudoku.ui \
     ventana_principal.ui \
     acercade.ui \
     ayuda.ui \
-    ventana_jugar.ui
+    ventana_jugar.ui \
+    estadisticas.ui

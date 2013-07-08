@@ -10,9 +10,10 @@ Sudoku::Sudoku(int nivel, bool cargar, QWidget *parent) :
     setWindowTitle("Sudoku");
     setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setFixedSize(width(),height());
-    bool ok;
-    nombre=QInputDialog::getText(this,"Juego Nuevo","Ingrese el nombre del jugador:",QLineEdit::Normal,"",&ok);
-
+    if(!cargar){
+            bool ok;
+            nombre=QInputDialog::getText(this,"Juego Nuevo","Ingrese el nombre del jugador:",QLineEdit::Normal,"",&ok);
+        }
 
 
     Tablero* t = new Tablero();
@@ -301,7 +302,7 @@ void Sudoku::iniciarTeclado(){
 
 void Sudoku::pasarUIAMatriz(){
     Casilla *cas;
-    int cont,f=0,c=0;
+    int cont;
     //Bloque 1
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
@@ -324,7 +325,6 @@ void Sudoku::pasarUIAMatriz(){
             cas = (Casilla*)(ui->bloque3->itemAtPosition(i,j)->widget());
             cont = cas->getContenido();
             matriz[i][j+6]=cont;
-            c++;
         }
     }
     //Bloque 4
@@ -402,7 +402,6 @@ void Sudoku::pasarStringAMatriz(QString linea){
 
 void Sudoku::cargarPartida(){
     SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
-    //if (QMessageBox::Yes == QMessageBox::question(this, "Cargar", "Si carga la partida, se perderá la información actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
             QFile archivo("partida.txt");
             if (archivo.exists("partida.txt")){
                 archivo.open(QFile::ReadOnly);
@@ -415,7 +414,6 @@ void Sudoku::cargarPartida(){
                 QMessageBox::critical(this,"Error","No existe el archivo ");
             }
             archivo.close();
-    //}
 }
 
 
@@ -475,7 +473,13 @@ void Sudoku::on_actionVerificar_Soluci_n_triggered()
     }
 
     if(!valido) QMessageBox::critical(this,"Error","El tablero está mal llenado");
-    else QMessageBox::information(this,"Felicidades","El tablero está correcto");
+    else{
+            QMessageBox::information(this,"Felicidades","El tablero está correcto!");
+            guardarGanadores();
+            Ventana_principal *v = new Ventana_principal();
+            close();
+            v->show();
+        }
 }
 
 void Sudoku::on_actionGuardar_partida_triggered()
@@ -499,7 +503,7 @@ void Sudoku::on_actionGuardar_partida_triggered()
 
 void Sudoku::on_actionVolver_al_men_principal_triggered()
 {
-    if (QMessageBox::Yes == QMessageBox::question(this, "Volver", "Se perderá la partida actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
+    if (QMessageBox::Yes == QMessageBox::question(this, "Volver", "Si no ha guardado, se perderá la partida actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
         Ventana_principal *v = new Ventana_principal();
         close();
         v->show();
@@ -508,8 +512,20 @@ void Sudoku::on_actionVolver_al_men_principal_triggered()
 
 void Sudoku::on_actionSalir_triggered()
 {
-    if (QMessageBox::Yes == QMessageBox::question(this, "Salir", "Se perderá la partida actual.\n¿Seguro que desea salir?", QMessageBox::Yes|QMessageBox::No)){
+    if (QMessageBox::Yes == QMessageBox::question(this, "Salir", "Si no ha guardado, se perderá la partida actual.\n¿Seguro que desea salir?", QMessageBox::Yes|QMessageBox::No)){
         QMessageBox::information(this,"Salir","Vuelva pronto!");
         close();
     }
+}
+
+void Sudoku::guardarGanadores(){
+        QFile archivo("ganadores.txt");
+        if ( !archivo.open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(this,"Error!","La partida no se pudo guardar");
+        } else {
+            QTextStream stream(&archivo);
+            stream << nombre;
+            stream.flush();
+            QMessageBox::information(this,"Solucionado!","Su nombre se ha guardado en la lista de ganadores!");
+        }
 }

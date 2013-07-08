@@ -35,7 +35,8 @@ void Ventana_principal::on_Btn_Iniciar_clicked()
 
 void Ventana_principal::on_Btn_estadisticas_clicked()
 {
-
+    Estadisticas *e = new Estadisticas();
+    e->show();
 }
 
 void Ventana_principal::on_Btn_Ayuda_clicked()

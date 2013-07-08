@@ -10,6 +10,10 @@ Sudoku::Sudoku(int nivel, bool cargar, QWidget *parent) :
     setWindowTitle("Sudoku");
     setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setFixedSize(width(),height());
+    bool ok;
+    nombre=QInputDialog::getText(this,"Juego Nuevo","Ingrese el nombre del jugador:",QLineEdit::Normal,"",&ok);
+
+
 
     Tablero* t = new Tablero();
     inicializarMatriz();
@@ -22,7 +26,6 @@ Sudoku::Sudoku(int nivel, bool cargar, QWidget *parent) :
         cargarPartida();
     }
     pasarMatrizAUI();
-
 }
 
 Sudoku::~Sudoku()
@@ -351,43 +354,6 @@ void Sudoku::pasarStringAMatriz(QString linea){
     }
 }
 
-void Sudoku::on_Btn_validar_clicked(){
-    bool valido=true;
-
-    pasarUIAMatriz();
-
-    for(int i=0; i<9; i++)
-    {
-        for(int j=0; j<9; j++)
-        {
-            if(!validarFila(i,j)) valido=false;
-            if(!validarColumna(i,j)) valido=false;
-            if(!validarBloque(i,j)) valido=false;
-        }
-    }
-
-    if(!valido) std::cout<<"El tablero esta mal llenado"<<std::endl;
-    else std::cout<<"El tablero esta bien llenado"<<std::endl;
-}
-
-void Sudoku::on_Btn_Guardar_clicked(){
-    SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
-    if (QMessageBox::Yes == QMessageBox::question(this, "Guardar", "¿Desea guardar la partida actual?", QMessageBox::Yes|QMessageBox::No)){
-        pasarUIAMatriz();
-        QString linea=pasarMatrizAString();
-        QString crypted=crypto.encryptToString(linea);
-        QFile archivo("partida.txt");
-        if ( !archivo.open(QIODevice::WriteOnly)) {
-            QMessageBox::critical(this,"Error!","La partida no se pudo guardar");
-        } else {
-            QTextStream stream(&archivo);
-            stream << crypted;
-            stream.flush();
-            QMessageBox::information(this,"Guardado!","La partida se ha guardado con éxito");
-        }
-    }
-}
-
 void Sudoku::cargarPartida(){
     SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
     //if (QMessageBox::Yes == QMessageBox::question(this, "Cargar", "Si carga la partida, se perderá la información actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
@@ -399,7 +365,6 @@ void Sudoku::cargarPartida(){
                 QString linea=crypto.decryptToString(crypt);
                 pasarStringAMatriz(linea);
                 pasarMatrizAUI();
-                //QMessageBox::information(this,"Cargado!","La partida se ha cargado con éxito");
             } else {
                 QMessageBox::critical(this,"Error","No existe el archivo ");
             }
@@ -472,3 +437,57 @@ bool Sudoku::validarBloque(int fila, int columna){
 
 
 
+
+void Sudoku::on_actionVerificar_Soluci_n_triggered()
+{
+    bool valido=true;
+    pasarUIAMatriz();
+    for(int i=0; i<9; i++)
+    {
+        for(int j=0; j<9; j++)
+        {
+            if(!validarFila(i,j)) valido=false;
+            if(!validarColumna(i,j)) valido=false;
+            if(!validarBloque(i,j)) valido=false;
+        }
+    }
+
+    if(!valido) QMessageBox::critical(this,"Error","El tablero está mal llenado");
+    else QMessageBox::information(this,"Felicidades","El tablero está correcto");
+}
+
+void Sudoku::on_actionGuardar_partida_triggered()
+{
+    SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
+    if (QMessageBox::Yes == QMessageBox::question(this, "Guardar", "¿Desea guardar la partida actual?", QMessageBox::Yes|QMessageBox::No)){
+        pasarUIAMatriz();
+        QString linea=pasarMatrizAString();
+        QString crypted=crypto.encryptToString(linea);
+        QFile archivo("partida.txt");
+        if ( !archivo.open(QIODevice::WriteOnly)) {
+            QMessageBox::critical(this,"Error!","La partida no se pudo guardar");
+        } else {
+            QTextStream stream(&archivo);
+            stream << crypted;
+            stream.flush();
+            QMessageBox::information(this,"Guardado!","La partida se ha guardado con éxito");
+        }
+    }
+}
+
+void Sudoku::on_actionVolver_al_men_principal_triggered()
+{
+    if (QMessageBox::Yes == QMessageBox::question(this, "Volver", "Se perderá la partida actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
+        Ventana_principal *v = new Ventana_principal();
+        close();
+        v->show();
+    }
+}
+
+void Sudoku::on_actionSalir_triggered()
+{
+    if (QMessageBox::Yes == QMessageBox::question(this, "Salir", "Se perderá la partida actual.\n¿Seguro que desea salir?", QMessageBox::Yes|QMessageBox::No)){
+        QMessageBox::information(this,"Salir","Vuelva pronto!");
+        close();
+    }
+}

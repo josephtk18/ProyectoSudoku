@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
+    <width>584</width>
     <height>686</height>
    </rect>
   </property>
@@ -14,19 +14,6 @@
    <string>Sudoku</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="Btn_validar">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Validar</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
@@ -41,19 +28,6 @@
       <enum>QLayout::SetDefaultConstraint</enum>
      </property>
     </layout>
-   </widget>
-   <widget class="QPushButton" name="Btn_Guardar">
-    <property name="geometry">
-     <rect>
-      <x>590</x>
-      <y>50</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Guardar</string>
-    </property>
    </widget>
    <widget class="Line" name="line">
     <property name="geometry">
@@ -253,16 +227,60 @@
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>681</width>
+     <width>584</width>
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <addaction name="actionVerificar_Soluci_n"/>
+    <addaction name="actionGuardar_partida"/>
+   </widget>
+   <widget class="QMenu" name="menuCerrar">
+    <property name="title">
+     <string>Cerrar</string>
+    </property>
+    <addaction name="actionVolver_al_men_principal"/>
+    <addaction name="actionSalir"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuCerrar"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionMenu">
+   <property name="text">
+    <string>Verificar solución</string>
+   </property>
+  </action>
+  <action name="actionVerificar_Soluci_n">
+   <property name="text">
+    <string>Verificar Solución</string>
+   </property>
+  </action>
+  <action name="actionGuardar_partida">
+   <property name="text">
+    <string>Guardar partida</string>
+   </property>
+  </action>
+  <action name="actionVolver_al_men_principal">
+   <property name="text">
+    <string>Volver al menú principal</string>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

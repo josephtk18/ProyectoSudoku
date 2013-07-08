@@ -15,6 +15,8 @@
 #include <QFile>
 #include <QMessageBox>
 #include <digito.h>
+#include <QInputDialog>
+#include <ventana_principal.h>
 
 namespace Ui {
 class Sudoku;
@@ -44,15 +46,20 @@ public:
     ~Sudoku();
 
 private slots:
-    void on_Btn_validar_clicked();
 
-    void on_Btn_Guardar_clicked();
+    void on_actionVerificar_Soluci_n_triggered();
 
+    void on_actionGuardar_partida_triggered();
+
+    void on_actionVolver_al_men_principal_triggered();
+
+    void on_actionSalir_triggered();
 
 private:
     Ui::Sudoku *ui;
     int matriz[9][9];
     Digito *Teclado[9];
+    QString nombre;
 
 };
 

@@ -18,8 +18,8 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -28,11 +28,14 @@ QT_BEGIN_NAMESPACE
 class Ui_Sudoku
 {
 public:
+    QAction *actionMenu;
+    QAction *actionVerificar_Soluci_n;
+    QAction *actionGuardar_partida;
+    QAction *actionVolver_al_men_principal;
+    QAction *actionSalir;
     QWidget *centralWidget;
-    QPushButton *Btn_validar;
     QWidget *gridLayoutWidget;
     QGridLayout *bloque1;
-    QPushButton *Btn_Guardar;
     QFrame *line;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *gridTeclado;
@@ -57,18 +60,27 @@ public:
     QWidget *gridLayoutWidget_9;
     QGridLayout *bloque9;
     QMenuBar *menuBar;
+    QMenu *menuMenu;
+    QMenu *menuCerrar;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *Sudoku)
     {
         if (Sudoku->objectName().isEmpty())
             Sudoku->setObjectName(QStringLiteral("Sudoku"));
-        Sudoku->resize(681, 686);
+        Sudoku->resize(584, 686);
+        actionMenu = new QAction(Sudoku);
+        actionMenu->setObjectName(QStringLiteral("actionMenu"));
+        actionVerificar_Soluci_n = new QAction(Sudoku);
+        actionVerificar_Soluci_n->setObjectName(QStringLiteral("actionVerificar_Soluci_n"));
+        actionGuardar_partida = new QAction(Sudoku);
+        actionGuardar_partida->setObjectName(QStringLiteral("actionGuardar_partida"));
+        actionVolver_al_men_principal = new QAction(Sudoku);
+        actionVolver_al_men_principal->setObjectName(QStringLiteral("actionVolver_al_men_principal"));
+        actionSalir = new QAction(Sudoku);
+        actionSalir->setObjectName(QStringLiteral("actionSalir"));
         centralWidget = new QWidget(Sudoku);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        Btn_validar = new QPushButton(centralWidget);
-        Btn_validar->setObjectName(QStringLiteral("Btn_validar"));
-        Btn_validar->setGeometry(QRect(590, 10, 75, 23));
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(20, 10, 171, 171));
@@ -78,9 +90,6 @@ public:
         bloque1->setObjectName(QStringLiteral("bloque1"));
         bloque1->setSizeConstraint(QLayout::SetDefaultConstraint);
         bloque1->setContentsMargins(0, 0, 0, 0);
-        Btn_Guardar = new QPushButton(centralWidget);
-        Btn_Guardar->setObjectName(QStringLiteral("Btn_Guardar"));
-        Btn_Guardar->setGeometry(QRect(590, 50, 75, 23));
         line = new QFrame(centralWidget);
         line->setObjectName(QStringLiteral("line"));
         line->setGeometry(QRect(0, 570, 581, 16));
@@ -189,11 +198,23 @@ public:
         Sudoku->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Sudoku);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 681, 20));
+        menuBar->setEnabled(true);
+        menuBar->setGeometry(QRect(0, 0, 584, 20));
+        menuMenu = new QMenu(menuBar);
+        menuMenu->setObjectName(QStringLiteral("menuMenu"));
+        menuCerrar = new QMenu(menuBar);
+        menuCerrar->setObjectName(QStringLiteral("menuCerrar"));
         Sudoku->setMenuBar(menuBar);
         statusBar = new QStatusBar(Sudoku);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         Sudoku->setStatusBar(statusBar);
+
+        menuBar->addAction(menuMenu->menuAction());
+        menuBar->addAction(menuCerrar->menuAction());
+        menuMenu->addAction(actionVerificar_Soluci_n);
+        menuMenu->addAction(actionGuardar_partida);
+        menuCerrar->addAction(actionVolver_al_men_principal);
+        menuCerrar->addAction(actionSalir);
 
         retranslateUi(Sudoku);
 
@@ -203,8 +224,13 @@ public:
     void retranslateUi(QMainWindow *Sudoku)
     {
         Sudoku->setWindowTitle(QApplication::translate("Sudoku", "Sudoku", 0));
-        Btn_validar->setText(QApplication::translate("Sudoku", "Validar", 0));
-        Btn_Guardar->setText(QApplication::translate("Sudoku", "Guardar", 0));
+        actionMenu->setText(QApplication::translate("Sudoku", "Verificar soluci\303\263n", 0));
+        actionVerificar_Soluci_n->setText(QApplication::translate("Sudoku", "Verificar Soluci\303\263n", 0));
+        actionGuardar_partida->setText(QApplication::translate("Sudoku", "Guardar partida", 0));
+        actionVolver_al_men_principal->setText(QApplication::translate("Sudoku", "Volver al men\303\272 principal", 0));
+        actionSalir->setText(QApplication::translate("Sudoku", "Salir", 0));
+        menuMenu->setTitle(QApplication::translate("Sudoku", "Menu", 0));
+        menuCerrar->setTitle(QApplication::translate("Sudoku", "Cerrar", 0));
     } // retranslateUi
 
 };

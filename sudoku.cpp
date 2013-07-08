@@ -51,7 +51,6 @@ void Sudoku::asignToSelect(QObject *ob){
     }
 }
 
-
 void Sudoku::inicializarMatriz(){
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
@@ -416,7 +415,6 @@ void Sudoku::cargarPartida(){
             archivo.close();
 }
 
-
 bool Sudoku::validacion(int fila, int columna){
     if(validarFila(fila,columna) && validarColumna(fila,columna) && validarBloque(fila,columna)) return true;
     return false;
@@ -453,10 +451,6 @@ bool Sudoku::validarBloque(int fila, int columna){
     }
     return true;
 }
-
-
-
-
 
 void Sudoku::on_actionVerificar_Soluci_n_triggered()
 {

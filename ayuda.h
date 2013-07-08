@@ -14,6 +14,10 @@ class Ayuda : public QMainWindow
 public:
     explicit Ayuda(QWidget *parent = 0);
     ~Ayuda();
+    /**
+        @brief Establece una imagen de fondo.
+        Coloca como background una imagen previamente cargada en la ventana 'Ayuda'
+        */
     void setBackgroundImage();
     
 private:

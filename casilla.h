@@ -23,6 +23,7 @@ public:
     void setModificable(bool m);
     int buscarRegion(int f, int c);
     void setGrafic(int i);
+    void setGrafic2(int i);
 
 protected:
     void mousePressEvent(QMouseEvent *ev);

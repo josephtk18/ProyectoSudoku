@@ -46,7 +46,7 @@ void Sudoku::asignToSelect(QObject *ob){
         Digito *d = (Digito*)ob;
         int dig = d->getDigito();
         casSelect->setContenido(dig);
-        casSelect->setGrafic(dig);
+        casSelect->setGrafic2(dig);
     }
 }
 

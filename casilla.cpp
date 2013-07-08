@@ -109,6 +109,40 @@ void Casilla::setGrafic(int i){
     }
 }
 
+void Casilla::setGrafic2(int i){
+    //Funcion que asigna la imagen del numero al QLabel
+    switch (i) {
+    case 1:
+        this->setPixmap(QPixmap("Imagenes/ds1.jpg"));
+        break;
+    case 2:
+        this->setPixmap(QPixmap("Imagenes/ds2.jpg"));
+        break;
+    case 3:
+        this->setPixmap(QPixmap("Imagenes/ds3.jpg"));
+        break;
+    case 4:
+        this->setPixmap(QPixmap("Imagenes/ds4.jpg"));
+        break;
+    case 5:
+        this->setPixmap(QPixmap("Imagenes/ds5.jpg"));
+        break;
+    case 6:
+        this->setPixmap(QPixmap("Imagenes/ds6.jpg"));
+        break;
+    case 7:
+        this->setPixmap(QPixmap("Imagenes/ds7.jpg"));
+        break;
+    case 8:
+        this->setPixmap(QPixmap("Imagenes/ds8.jpg"));
+        break;
+    case 9:
+        this->setPixmap(QPixmap("Imagenes/ds9.jpg"));
+        break;
+    default:
+        break;
+    }
+}
 void Casilla::mousePressEvent(QMouseEvent *ev){
     emit clickedChange(this);
 }

@@ -33,6 +33,24 @@ Sudoku::~Sudoku()
     delete ui;
 }
 
+void Sudoku::changeSelected(QObject *o){
+    if(!o) return;
+
+    casSelect=(Casilla*)o;
+
+}
+
+void Sudoku::asignToSelect(QObject *ob){
+    if(!ob) return;
+    if(casSelect->isModificable()){
+        Digito *d = (Digito*)ob;
+        int dig = d->getDigito();
+        casSelect->setContenido(dig);
+        casSelect->setGrafic(dig);
+    }
+}
+
+
 void Sudoku::inicializarMatriz(){
     for(int i=0; i<9; i++){
         for(int j=0; j<9; j++){
@@ -56,6 +74,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque1
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque1->addWidget(casillas[z],i,j);
             z++;
         }
@@ -63,6 +82,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque2
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque2->addWidget(casillas[z],i,j);
             z++;
         }
@@ -70,6 +90,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque3
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque3->addWidget(casillas[z],i,j);
             z++;
         }
@@ -77,6 +98,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque4
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque4->addWidget(casillas[z],i,j);
             z++;
         }
@@ -84,6 +106,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque5
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque5->addWidget(casillas[z],i,j);
             z++;
         }
@@ -91,6 +114,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque6
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque6->addWidget(casillas[z],i,j);
             z++;
         }
@@ -98,6 +122,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque7
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque7->addWidget(casillas[z],i,j);
             z++;
         }
@@ -105,6 +130,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque8
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque8->addWidget(casillas[z],i,j);
             z++;
         }
@@ -112,6 +138,7 @@ void Sudoku::inicializarTablasUI(Casilla *casillas[]){
     //Inicializo bloque9
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
+            QObject::connect(casillas[z],SIGNAL(clickedChange(QObject*)),this,SLOT(changeSelected(QObject*)));
             ui->bloque9->addWidget(casillas[z],i,j);
             z++;
         }
@@ -156,6 +183,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque1->itemAtPosition(i1,j1)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j1++;
                 if(j1==3){
                     i1++;
@@ -166,6 +195,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque2->itemAtPosition(i2,j2)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j2++;
                 if(j2==3){
                     i2++;
@@ -176,6 +207,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque3->itemAtPosition(i3,j3)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j3++;
                 if(j3==3){
                     i3++;
@@ -186,6 +219,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque4->itemAtPosition(i4,j4)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j4++;
                 if(j4==3){
                     i4++;
@@ -196,6 +231,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque5->itemAtPosition(i5,j5)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j5++;
                 if(j5==3){
                     i5++;
@@ -206,6 +243,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque6->itemAtPosition(i6,j6)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j6++;
                 if(j6==3){
                     i6++;
@@ -216,6 +255,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque7->itemAtPosition(i7,j7)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j7++;
                 if(j7==3){
                     i7++;
@@ -226,6 +267,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque8->itemAtPosition(i8,j8)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j8++;
                 if(j8==3){
                     i8++;
@@ -236,6 +279,8 @@ void Sudoku::pasarMatrizAUI(){
                 cas = (Casilla*)(ui->bloque9->itemAtPosition(i9,j9)->widget());
                 cas->setContenido(matriz[i][j]);
                 cas->setGrafic(matriz[i][j]);
+                if(matriz[i][j]==0)
+                    cas->setModificable(true);
                 j9++;
                 if(j9==3){
                     i9++;
@@ -249,6 +294,7 @@ void Sudoku::pasarMatrizAUI(){
 void Sudoku::iniciarTeclado(){
     for(int i=0; i<9; i++){
         Teclado[i]=new Digito(i+1);
+        QObject::connect(Teclado[i],SIGNAL(asignDigit(QObject*)),this,SLOT(asignToSelect(QObject*)));
         ui->gridTeclado->addWidget(Teclado[i]);
     }
 }
@@ -371,30 +417,6 @@ void Sudoku::cargarPartida(){
             archivo.close();
     //}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 bool Sudoku::validacion(int fila, int columna){

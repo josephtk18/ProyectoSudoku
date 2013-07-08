@@ -55,11 +55,16 @@ private slots:
 
     void on_actionSalir_triggered();
 
+public slots:
+    void changeSelected(QObject *o);
+    void asignToSelect(QObject *ob);
+
 private:
     Ui::Sudoku *ui;
     int matriz[9][9];
     Digito *Teclado[9];
     QString nombre;
+    Casilla *casSelect;
 
 };
 

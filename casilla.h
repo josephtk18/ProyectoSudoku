@@ -6,6 +6,7 @@
 
 class Casilla : public QLabel
 {
+    Q_OBJECT
 public:
     Casilla(int cont, int f, int c, int reg);
     int getContenido();
@@ -13,17 +14,25 @@ public:
     int getColumna();
     int getRegion();
     bool isOcupada();
+    bool isModificable();
     void setContenido(int cont);
     void setFila(int f);
     void setColumna(int c);
     void setRegion(int r);
     void setOcupada(bool d);
+    void setModificable(bool m);
     int buscarRegion(int f, int c);
     void setGrafic(int i);
 
+protected:
+    void mousePressEvent(QMouseEvent *ev);
+
+signals:
+    void clickedChange(QObject *obj);
+
 private:
     int contenido, fila, columna, region;
-    bool ocupada;
+    bool ocupada,modificable;
 };
 
 #endif // CASILLA_H

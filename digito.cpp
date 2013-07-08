@@ -51,3 +51,8 @@ void Digito::setGrafic(int i){
         break;
     }
 }
+
+void Digito::mousePressEvent(QMouseEvent *ev){
+    emit asignDigit(this);
+}
+

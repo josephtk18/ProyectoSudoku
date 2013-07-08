@@ -6,6 +6,7 @@ Casilla::Casilla(int cont, int f, int c, int reg){
     columna=c;
     region=reg;
     ocupada=true;
+    modificable=false;
     setMinimumSize(50,50);
     setGrafic(cont);
     setVisible(true);
@@ -28,6 +29,9 @@ int Casilla::getRegion(){
 bool Casilla::isOcupada(){
     return this->ocupada;
 }
+bool Casilla::isModificable(){
+    return this->modificable;
+}
 
 //SETTERS
 void Casilla::setContenido(int cont){
@@ -44,6 +48,9 @@ void Casilla::setRegion(int r){
 }
 void Casilla::setOcupada(bool d){
     this->ocupada=d;
+}
+void Casilla::setModificable(bool m){
+    this->modificable=m;
 }
 
 int Casilla::buscarRegion(int f, int c){
@@ -102,3 +109,6 @@ void Casilla::setGrafic(int i){
     }
 }
 
+void Casilla::mousePressEvent(QMouseEvent *ev){
+    emit clickedChange(this);
+}

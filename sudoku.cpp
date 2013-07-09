@@ -8,7 +8,7 @@ Sudoku::Sudoku(int nivel, bool cargar, QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Sudoku");
-    setWindowIcon(QIcon(":/recursos/Imagenes/logo.JPG"));
+    setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setFixedSize(width(),height());
     if(!cargar){
             bool ok;
@@ -50,7 +50,6 @@ void Sudoku::asignToSelect(QObject *ob){
         casSelect->setGrafic2(dig);
     }
 }
-
 
 void Sudoku::inicializarMatriz(){
     for(int i=0; i<9; i++){
@@ -402,8 +401,8 @@ void Sudoku::pasarStringAMatriz(QString linea){
 
 void Sudoku::cargarPartida(){
     SimpleCrypt crypto(Q_UINT64_C(0x0c2ad4a4acb9f023));
-            QFile archivo(":/recursos/partida.txt");
-            if (archivo.exists(":/recursos/partida.txt")){
+            QFile archivo("partida.txt");
+            if (archivo.exists("partida.txt")){
                 archivo.open(QFile::ReadOnly);
                 QTextStream stream(&archivo);
                 QString crypt=stream.readAll();
@@ -484,7 +483,7 @@ void Sudoku::on_actionGuardar_partida_triggered()
         pasarUIAMatriz();
         QString linea=pasarMatrizAString();
         QString crypted=crypto.encryptToString(linea);
-        QFile archivo(":/recursos/partida.txt");
+        QFile archivo("partida.txt");
         if ( !archivo.open(QIODevice::WriteOnly)) {
             QMessageBox::critical(this,"Error!","La partida no se pudo guardar");
         } else {

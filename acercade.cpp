@@ -7,7 +7,7 @@ AcercaDe::AcercaDe(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Acerca De");
-    setWindowIcon(QIcon(":/recursos/Imagenes/logo.JPG"));
+    setWindowIcon(QIcon("Imagenes/logo.jpg"));
     setBackgroundImage();
     setFixedSize(width(),height());
 }
@@ -18,7 +18,7 @@ AcercaDe::~AcercaDe()
 }
 
 void AcercaDe::setBackgroundImage(){
-    QPixmap bg(":/recursos/Imagenes/yingyangsudoku.jpg");
+    QPixmap bg("Imagenes/yingyangsudoku.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);

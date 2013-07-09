@@ -7,8 +7,8 @@ Estadisticas::Estadisticas(QWidget *parent) :
     ui(new Ui::Estadisticas)
 {
     ui->setupUi(this);
-    setWindowTitle("Estadísticas");
-    setWindowIcon(QIcon("Imagenes/logo.jpg"));
+    setWindowTitle(":/recursos/Estadísticas");
+    setWindowIcon(QIcon(":/recursos/Imagenes/logo.JPG"));
     setBackgroundImage();
     setFixedSize(width(),height());
     QString ganadores=cargarGanadores();
@@ -22,7 +22,7 @@ Estadisticas::~Estadisticas()
 }
 
 void Estadisticas::setBackgroundImage(){
-    QPixmap bg("Imagenes/yingyangsudoku.jpg");
+    QPixmap bg(":/recursos/Imagenes/yingyangsudoku.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);
@@ -31,8 +31,8 @@ void Estadisticas::setBackgroundImage(){
 
 QString Estadisticas::cargarGanadores(){
     QString ganadores;
-    QFile archivo("ganadores.txt");
-    if (archivo.exists("ganadores.txt")){
+    QFile archivo(":/recursos/ganadores.txt");
+    if (archivo.exists(":/recursos/ganadores.txt")){
         archivo.open(QFile::ReadOnly);
         QTextStream stream(&archivo);
         ganadores=stream.readAll();

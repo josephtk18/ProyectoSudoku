@@ -7,7 +7,7 @@ Ventana_Jugar::Ventana_Jugar(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle("Iniciar Partida");
-    setWindowIcon(QIcon("Imagenes/logo.jpg"));
+    setWindowIcon(QIcon(":/recursos/Imagenes/logo.JPG"));
     setBackgroundImage();
     setFixedSize(width(),height());
 }
@@ -18,7 +18,7 @@ Ventana_Jugar::~Ventana_Jugar()
 }
 
 void Ventana_Jugar::setBackgroundImage(){
-    QPixmap bg("Imagenes/yingyangsudoku.jpg");
+    QPixmap bg(":/recursos/Imagenes/yingyangsudoku.jpg");
     QPalette p(palette());
     p.setBrush(QPalette::Background, bg);
     setAutoFillBackground(true);

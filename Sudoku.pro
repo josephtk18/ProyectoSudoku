@@ -41,3 +41,6 @@ FORMS    += sudoku.ui \
     ayuda.ui \
     ventana_jugar.ui \
     estadisticas.ui
+
+RESOURCES += \
+    recursos.qrc

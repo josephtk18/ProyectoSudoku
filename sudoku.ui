@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>584</width>
-    <height>686</height>
+    <width>725</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>10</y>
+      <y>20</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -33,7 +33,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>570</y>
+      <y>580</y>
       <width>581</width>
       <height>16</height>
      </rect>
@@ -46,7 +46,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>590</y>
+      <y>600</y>
       <width>551</width>
       <height>61</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>190</x>
-      <y>10</y>
+      <y>20</y>
       <width>20</width>
       <height>551</height>
      </rect>
@@ -70,7 +70,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>10</y>
+      <y>20</y>
       <width>20</width>
       <height>551</height>
      </rect>
@@ -83,7 +83,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>180</y>
+      <y>190</y>
       <width>551</width>
       <height>20</height>
      </rect>
@@ -96,7 +96,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>370</y>
+      <y>380</y>
       <width>551</width>
       <height>20</height>
      </rect>
@@ -109,7 +109,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>10</y>
+      <y>20</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -124,7 +124,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>10</y>
+      <y>20</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -139,7 +139,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>200</y>
+      <y>210</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -154,7 +154,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>200</y>
+      <y>210</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -169,7 +169,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>200</y>
+      <y>210</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -184,7 +184,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>390</y>
+      <y>400</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -199,7 +199,7 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>390</y>
+      <y>400</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -214,7 +214,7 @@
     <property name="geometry">
      <rect>
       <x>400</x>
-      <y>390</y>
+      <y>400</y>
       <width>171</width>
       <height>171</height>
      </rect>
@@ -225,6 +225,17 @@
      </property>
     </layout>
    </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>20</y>
+      <width>131</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="LayoutCronometro"/>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="enabled">
@@ -234,7 +245,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>584</width>
+     <width>725</width>
      <height>20</height>
     </rect>
    </property>

@@ -27,11 +27,62 @@ Sudoku::Sudoku(int nivel, bool cargar, QWidget *parent) :
         cargarPartida();
     }
     pasarMatrizAUI();
+
+    inicializarCronometro();
+
+    startTime();
+
 }
 
 Sudoku::~Sudoku()
 {
     delete ui;
+}
+
+void Sudoku::inicializarCronometro(){
+
+    // Número con digitos tipo LCD
+    num = new QLCDNumber();
+
+    // Formato tiempo
+    time = new QTime;
+    time->setHMS(0,0,0,0);
+
+    // Creamos el temporizador
+    timer = new QTimer(this);
+
+    // Realizamos la conexión para que el método(Slot) showTime sea llamado cada segundo
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(showTime()));
+
+    // Iniciamos los segundos con valor 0
+    seconds=0;
+
+    // convertimos el formato tiempo a cadena(horas,min,sec) y le damos estilos (color, fondo)
+    QString text = time->toString("hh:mm:ss");
+    num->display(text);
+    num->setSegmentStyle(QLCDNumber::Filled);
+
+    ui->LayoutCronometro->addWidget(num);
+
+}
+
+void Sudoku::startTime(){
+    timer->start(1000);
+}
+void Sudoku::stopTime(){
+    timer->stop();
+}
+
+void Sudoku::showTime(){
+
+    // incrementamos los segundos de 1 en 1 y lo agregamos el tiempo
+    QTime newtime;
+    seconds = seconds + 1;
+    newtime = time->addSecs(seconds);
+
+    // convertimos el tiempo a cadena para mostrar
+    QString text = newtime.toString("hh:mm:ss");
+    num->display(text);
 }
 
 void Sudoku::changeSelected(QObject *o){
@@ -500,6 +551,7 @@ void Sudoku::on_actionVolver_al_men_principal_triggered()
 {
     if (QMessageBox::Yes == QMessageBox::question(this, "Volver", "Si no ha guardado, se perderá la partida actual.\n¿Desea continuar?", QMessageBox::Yes|QMessageBox::No)){
         Ventana_principal *v = new Ventana_principal();
+        stopTime();
         close();
         v->show();
     }
@@ -509,6 +561,7 @@ void Sudoku::on_actionSalir_triggered()
 {
     if (QMessageBox::Yes == QMessageBox::question(this, "Salir", "Si no ha guardado, se perderá la partida actual.\n¿Seguro que desea salir?", QMessageBox::Yes|QMessageBox::No)){
         QMessageBox::information(this,"Salir","Vuelva pronto!");
+        stopTime();
         close();
     }
 }

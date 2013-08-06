@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 #include <QGridLayout>
-#include <QLineEdit>
-#include <QLineEdit>
 #include <stdio.h>
 #include <stdlib.h>
 #include <tablero.h>
@@ -17,6 +15,9 @@
 #include <digito.h>
 #include <QInputDialog>
 #include <ventana_principal.h>
+#include <QLCDNumber>
+#include <QTime>
+#include <QTimer>
 
 namespace Ui {
 class Sudoku;
@@ -100,6 +101,10 @@ public:
     */
     bool validarBloque(int fila, int columna);
     /*!
+    @brief Inicializa el QLCDNumber
+    */
+    void inicializarCronometro();
+    /*!
     @brief Almacena el ganador de la partida en un .txt.
     */
     void guardarGanadores();
@@ -126,6 +131,9 @@ private slots:
 public slots:
     void changeSelected(QObject *o);
     void asignToSelect(QObject *ob);
+    void showTime();
+    void startTime();
+    void stopTime();
 
 private:
     Ui::Sudoku *ui;
@@ -133,6 +141,11 @@ private:
     Digito *Teclado[9];
     QString nombre;
     Casilla *casSelect;
+    QTime *time;
+    QTimer *timer;
+    QLCDNumber *num;
+    int seconds;
+
 
 };
 
